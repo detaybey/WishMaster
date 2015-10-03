@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
@@ -46,7 +47,10 @@
                                     <constraint firstAttribute="height" constant="30" id="p6Z-1N-8gR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0WK-bx-JIe"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PassWord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hto-HG-z73">
                                 <rect key="frame" x="216" y="166" width="168" height="30"/>
@@ -57,6 +61,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="BLy-xS-DNx"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* error placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr8-TA-CTh">
                                 <rect key="frame" x="216" y="204" width="168" height="29"/>
@@ -103,11 +110,65 @@
                         <outlet property="errorLabel" destination="sr8-TA-CTh" id="PH9-Bf-8cm"/>
                         <outlet property="passwordBox" destination="hto-HG-z73" id="N8G-0o-w2e"/>
                         <outlet property="usernameBox" destination="a6t-bQ-HeP" id="nBR-TO-cea"/>
+                        <segue destination="bSD-L0-7vh" kind="show" identifier="toCamera" id="ISd-dh-xdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="549"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="YGv-b1-Ura">
+            <objects>
+                <viewController storyboardIdentifier="cameraView" id="bSD-L0-7vh" customClass="CameraViewController" customModule="WishMaster_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t8x-ln-z4l"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uxu-6t-8Hb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="veH-2C-e3c">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3gF-7f-nfB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T62-Ir-d0O">
+                                <rect key="frame" x="145" y="76" width="310" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-56-JkS">
+                                <rect key="frame" x="145" y="114" width="310" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqR-w7-hTj">
+                                <rect key="frame" x="145" y="47" width="310" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.80392156859999997" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3gF-7f-nfB" firstAttribute="top" secondItem="veH-2C-e3c" secondAttribute="top" id="D4j-AW-q9U"/>
+                            <constraint firstItem="3gF-7f-nfB" firstAttribute="bottom" secondItem="Uxu-6t-8Hb" secondAttribute="top" id="S0H-QZ-U5R"/>
+                            <constraint firstAttribute="trailing" secondItem="3gF-7f-nfB" secondAttribute="trailing" id="cHC-iR-laG"/>
+                            <constraint firstItem="3gF-7f-nfB" firstAttribute="leading" secondItem="veH-2C-e3c" secondAttribute="leading" id="hys-tH-KqF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productPhoto" destination="3gF-7f-nfB" id="hlO-tt-rMj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTS-aP-gza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="549"/>
         </scene>
     </scenes>
 </document>
