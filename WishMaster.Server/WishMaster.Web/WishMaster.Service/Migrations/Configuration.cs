@@ -30,6 +30,21 @@ namespace WishMaster.Service.Migrations
               new Category { Name = "Other" }
             );
 
+            context.Users.AddOrUpdate(
+                p => p.Nick,
+                new User
+                {
+                    Nick = "system",
+                    Email = "genie@wishmaster.com",
+                    Password = "x",
+                    AddressLine1 = "123 Main Street",
+                    AddressLine2 = "",
+                    AddressCity = "OFallon",
+                    AddressZip = "63368",
+                    AddressState = "MO",                              AddressCountry = "USA"
+                }
+
+            );
         }
     }
 }

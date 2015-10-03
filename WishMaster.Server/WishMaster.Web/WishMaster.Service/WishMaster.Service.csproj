@@ -80,8 +80,18 @@
     <Compile Include="Migrations\201510031555155_FeedbackAdded.Designer.cs">
       <DependentUpon>201510031555155_FeedbackAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510031642035_UserAddressAdded.cs" />
+    <Compile Include="Migrations\201510031642035_UserAddressAdded.Designer.cs">
+      <DependentUpon>201510031642035_UserAddressAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031706009_UserAddressStateAdded.cs" />
+    <Compile Include="Migrations\201510031706009_UserAddressStateAdded.Designer.cs">
+      <DependentUpon>201510031706009_UserAddressStateAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\.BaseService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
   </ItemGroup>
@@ -95,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510031555155_FeedbackAdded.resx">
       <DependentUpon>201510031555155_FeedbackAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031642035_UserAddressAdded.resx">
+      <DependentUpon>201510031642035_UserAddressAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031706009_UserAddressStateAdded.resx">
+      <DependentUpon>201510031706009_UserAddressStateAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

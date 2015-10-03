@@ -41,6 +41,8 @@ namespace WishMaster.Service.Entities
         public string AddressZip { get; set; }
         [StringLength(3)]
         public string AddressCountry { get; set; }
+        [StringLength(2)]
+        public string AddressState { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
