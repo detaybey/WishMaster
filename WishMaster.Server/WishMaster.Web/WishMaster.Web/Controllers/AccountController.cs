@@ -11,7 +11,7 @@ namespace WishMaster.Web.Controllers
     {
 
         [HttpPost]
-        public ActionResult Login(LoginModel model)
+        public ActionResult MobileLogin(LoginModel model)
         {
             var result = new LoginResult() { Success = true };
             if (string.IsNullOrEmpty(model.username) || string.IsNullOrEmpty(model.password))
@@ -19,6 +19,11 @@ namespace WishMaster.Web.Controllers
                 result.Success = false;
             }
             return Json(result);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
         }
 
         public ActionResult Registration()

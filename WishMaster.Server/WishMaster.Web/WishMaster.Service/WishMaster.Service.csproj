@@ -94,6 +94,8 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
+    <Compile Include="ViewModels\LoginResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
