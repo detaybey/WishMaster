@@ -65,6 +65,7 @@
     <Compile Include="Entities\.dbcontext.cs" />
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\FraudLog.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />

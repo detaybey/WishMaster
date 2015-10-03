@@ -16,6 +16,7 @@ namespace WishMaster.Service.Entities
             Products = new HashSet<Product>();
             Products = new HashSet<Product>();
             Scores = new HashSet<Score>();
+            Feedbacks = new HashSet<Feedback>();
         }
 
         public long Id { get; set; }
@@ -34,5 +35,6 @@ namespace WishMaster.Service.Entities
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<Score> Scores { get; set; }
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }

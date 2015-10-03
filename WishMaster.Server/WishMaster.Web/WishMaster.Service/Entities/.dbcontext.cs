@@ -19,6 +19,7 @@ namespace WishMaster.Service.Entities
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<FraudLog> FraudLogs { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
@@ -49,6 +50,12 @@ namespace WishMaster.Service.Entities
                     .WithRequired(e => e.User)
                     .WillCascadeOnDelete(true);
 
+
+            modelBuilder.Entity<User>()
+                        .HasMany(e => e.Feedbacks)
+                        .WithRequired(e => e.User)
+                        .WillCascadeOnDelete(true);
+
             modelBuilder.Entity<Product>()
                      .HasMany(e => e.Orders)
                      .WithRequired(e => e.Product)
@@ -61,6 +68,11 @@ namespace WishMaster.Service.Entities
 
             modelBuilder.Entity<Order>()
                    .HasMany(e => e.Transactions)
+                   .WithRequired(e => e.Order)
+                   .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Order>()
+                   .HasMany(e => e.Feedbacks)
                    .WithRequired(e => e.Order)
                    .WillCascadeOnDelete(true);
 

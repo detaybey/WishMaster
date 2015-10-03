@@ -22,6 +22,7 @@ namespace WishMaster.Service.Entities
         public Order()
         {
             Transactions = new HashSet<Transaction>();
+            Feedbacks = new HashSet<Feedback>();
         }
 
         public long Id { get; set; }
@@ -42,5 +43,6 @@ namespace WishMaster.Service.Entities
         public OrderState State { get; set; }
 
         public ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Feedback> Feedbacks { get; set; }
     }
 }
