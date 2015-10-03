@@ -123,9 +123,18 @@ namespace Test.Services
         public void TestPaymentRequestCardTest()
         {
             PaymentRequest paymentRequestCard = new PaymentRequest();
-            paymentRequestCard.LocalDate = "1226";
-            paymentRequestCard.LocalTime = "125334";
-            paymentRequestCard.TransactionReference = 4000000003010101032L;
+
+            paymentRequestCard.ICA = "009674";
+            paymentRequestCard.ProcessorId = 9000000442L;
+            paymentRequestCard.RoutingAndTransitNumber = 990442082;
+            paymentRequestCard.MerchantId = 123456;
+            paymentRequestCard.TransactionDesc = "P2P";
+
+            paymentRequestCard.LocalDate = Sandbox.CurrentMonthTwoDigits() + Sandbox.CurrentDayTwoDigits();
+            paymentRequestCard.LocalTime = Sandbox.CurrentHourSixDigits();
+
+            paymentRequestCard.TransactionReference = Sandbox.GenerateLongRandomNumeric(); 
+
             paymentRequestCard.SenderName = "John Doe";
             paymentRequestCard.SenderAddress.Line1 = "123 Main Street";
             paymentRequestCard.SenderAddress.Line2 = "#5A";
@@ -133,19 +142,17 @@ namespace Test.Services
             paymentRequestCard.SenderAddress.CountrySubdivision = "VA";
             paymentRequestCard.SenderAddress.PostalCode = 22207;
             paymentRequestCard.SenderAddress.Country = "USA";
+
             paymentRequestCard.ReceivingCard.AccountNumber = 5184680430000014L;
             paymentRequestCard.ReceivingAmount.Value = 182206;
             paymentRequestCard.ReceivingAmount.Currency = 484;
-            paymentRequestCard.ICA = "009674";
-            paymentRequestCard.ProcessorId = 9000000442L;
-            paymentRequestCard.RoutingAndTransitNumber = 990442082;
+
             paymentRequestCard.CardAcceptor.Name = "My Local Bank";
             paymentRequestCard.CardAcceptor.City = "Saint Louis";
             paymentRequestCard.CardAcceptor.State = "MO";
             paymentRequestCard.CardAcceptor.PostalCode = 63101;
             paymentRequestCard.CardAcceptor.Country = "USA";
-            paymentRequestCard.TransactionDesc = "P2P";
-            paymentRequestCard.MerchantId = 123456;
+            
             Transfer transfer = service.GetTransfer(paymentRequestCard);
             Assert.IsTrue(transfer != null);
             Assert.IsTrue(transfer.TransactionReference > 0);
@@ -157,9 +164,9 @@ namespace Test.Services
         public void TestPaymentRequestMappedTest()
         {
             PaymentRequest paymentRequestMapped = new PaymentRequest();
-            paymentRequestMapped.LocalDate = "1226";
-            paymentRequestMapped.LocalTime = "125334";
-            paymentRequestMapped.TransactionReference = 4000000002010101037L;
+            paymentRequestMapped.LocalDate = Sandbox.CurrentMonthTwoDigits() + Sandbox.CurrentDayTwoDigits();
+            paymentRequestMapped.LocalTime = Sandbox.CurrentHourSixDigits();
+            paymentRequestMapped.TransactionReference = Sandbox.GenerateLongRandomNumeric();
             paymentRequestMapped.SenderName = "John Doe";
             paymentRequestMapped.SenderAddress.Line1 = "123 Main Street";
             paymentRequestMapped.SenderAddress.Line2 = "#5A";
@@ -167,9 +174,9 @@ namespace Test.Services
             paymentRequestMapped.SenderAddress.CountrySubdivision = "VA";
             paymentRequestMapped.SenderAddress.PostalCode = 22207;
             paymentRequestMapped.SenderAddress.Country = "USA";
-            paymentRequestMapped.ReceivingMapped.SubscriberId = "example2@email.com";
+            paymentRequestMapped.ReceivingMapped.SubscriberId = "exzmpl32@email.com";
             paymentRequestMapped.ReceivingMapped.SubscriberType = "EMAIL_ADDRESS";
-            paymentRequestMapped.ReceivingMapped.SubscriberAlias = "My Debit Card";
+            paymentRequestMapped.ReceivingMapped.SubscriberAlias = "MyzDebit2Card";
             paymentRequestMapped.ReceivingAmount.Value = 10000;
             paymentRequestMapped.ReceivingAmount.Currency = 840;
             paymentRequestMapped.ICA = "009674";

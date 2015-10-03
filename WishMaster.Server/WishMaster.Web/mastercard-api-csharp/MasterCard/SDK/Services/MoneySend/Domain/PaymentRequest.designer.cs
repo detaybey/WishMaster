@@ -22,8 +22,6 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
 
         private String localTimeField;
 
-        private long? transactionReferenceField;
-
         private String senderNameField;
 
         private PaymentRequestSenderAddress senderAddressField;
@@ -79,17 +77,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public long? TransactionReference
-        {
-            get
-            {
-                return this.transactionReferenceField;
-            }
-            set
-            {
-                this.transactionReferenceField = value;
-            }
-        }
+        public string TransactionReference { get; set; }
 
         public String SenderName
         {

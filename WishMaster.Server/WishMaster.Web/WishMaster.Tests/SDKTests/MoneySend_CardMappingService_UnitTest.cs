@@ -30,18 +30,18 @@ namespace Test.Services
         {
             CreateMappingRequest createRequest = new CreateMappingRequest();
             createRequest.ICA = "009674";
-            createRequest.SubscriberId = "13147449999";
+            createRequest.SubscriberId = "5321112991";
             createRequest.SubscriberType = "PHONE_NUMBER";
             createRequest.AccountUsage = "RECEIVING";
             createRequest.AccountNumber = "5184680430000006";
             createRequest.DefaultIndicator = "T";
-            createRequest.ExpiryDate = 201401;
-            createRequest.Alias = "My Debit Card";
+            createRequest.ExpiryDate = 201701;
+            createRequest.Alias = "MyYYY Debit Card";
             createRequest.Address.Line1 = "123 Main Street";
             createRequest.Address.City = "OFallon";
+            createRequest.Address.PostalCode = 63368;
             createRequest.Address.CountrySubdivision = "MO";
             createRequest.Address.Country = "USA";
-            createRequest.Address.PostalCode = 63368;
             createRequest.CardholderFullName.CardholderFirstName = "John";
             createRequest.CardholderFullName.CardholderMiddleName = "Q";
             createRequest.CardholderFullName.CardholderLastName = "Public";
