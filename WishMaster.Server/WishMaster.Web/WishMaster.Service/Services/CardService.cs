@@ -222,17 +222,17 @@ namespace WishMaster.Service.Services
         /// </summary>
         /// <param name="usdAmout"></param>
         /// <param name="order"></param>
-        public void ChargeBuyer(long usdAmount, Order order)
+        /// <returns>True if charge occured successfully</returns>
+        public Payment ChargeBuyer(long usdAmount, User buyer)
         {
-            var buyer = order.Customer;
             var buyerCard = buyer.Cards.First();
             if (CheckLostStolen(buyerCard))
             {
-                return;
+                return null;
             }
             if (CheckFraud(buyerCard, usdAmount))
             {
-                return;
+                return null;
             }
 
             PaymentsApi.PublicApiKey = Security.GetSCPublicKey();
@@ -249,26 +249,10 @@ namespace WishMaster.Service.Services
 
             payment.Card = card;
             payment.Currency = "USD";
-            payment.Description = "PD:" + order.Product.Title;
+            payment.Description = "Wishmaster Order";
             payment = (Payment)api.Create(payment);
 
-            var transaction = new Transaction()
-            {
-                CardId = buyerCard.Id,
-                Date = DateTime.Now,
-                OrderId = order.Id,
-                RequestId = 0,
-                TransactionReference = 0,
-                Hash = Guid.NewGuid(),
-                UsdAmount = usdAmount,
-                Type = TransactionType.Charge_Buyer,
-                AuthCode = payment.AuthCode,
-                PaymentId = payment.Id,
-                Approved = payment.PaymentStatus == "APPROVED"
-            };
-            Db.Transactions.Add(transaction);
-            Db.SaveChanges();
-
+            return payment;
         }
     }
 
