@@ -1,0 +1,5 @@
+*bin*
+*obj*
+*.usr
+WishMaster.Server/WishMaster.Web/Packages
+/WishMaster.Server/WishMaster.Web/.vs/WishMaster.Web/v14/*.suo
