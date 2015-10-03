@@ -8,14 +8,30 @@
 
 import UIKit
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var availableDays: UITextField!
+    @IBOutlet weak var customPicker: UIPickerView!
     @IBOutlet weak var productPhoto: UIImageView!
     var cameraAvailable = true
+    var pickerData = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        for index in 1...30 {
+            pickerData.append(String(index))
+        }
+        
+        customPicker.hidden = true
+        
+        self.availableDays.keyboardType = UIKeyboardType.NumberPad
+        self.availableDays.returnKeyType = UIReturnKeyType.Done
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,20 +46,58 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
 
     }
-
+    
+    func keyboardWillShow(notification: NSNotification) {
+        //var info = notification.userInfo!
+        //let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.topConstraint.constant = self.topConstraint.constant-20
+        })
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        //var info = notification.userInfo!
+        //let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.topConstraint.constant = self.topConstraint.constant + 20
+        })
+    }
+    
+    //Hide keyboard after editing
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        customPicker.hidden = true
+        return false
+    }
+    
+    //Hide keyboard when touched outside textbox
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        availableDays.text = pickerData[row]
+        customPicker.hidden = true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        cameraAvailable = false;
-        
-        productPhoto.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    @IBAction func sendProductClick(sender: AnyObject) {
         
         let imageData = UIImageJPEGRepresentation(productPhoto.image!, 0.2)
-        
         
         if imageData != nil{
             let request = NSMutableURLRequest(URL: NSURL(string:"http://172.29.4.211/account/PhotoTest")!)
@@ -76,8 +130,19 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 print(response)
                 print(error)
             }).resume()
-
-            picker.dismissViewControllerAnimated(true, completion: nil)
+            
+            
         }
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        cameraAvailable = false;
+        
+        productPhoto.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+
     }
 }
