@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WishMaster.Service.Entities;
+using WishMaster.Service.ViewModels;
 
 namespace WishMaster.Service.Services
 {
+    /// <summary>
+    /// User Service
+    /// </summary>
     public class UserService : BaseService
     {
         public UserService(WishMasterDataContext db)
@@ -15,35 +19,74 @@ namespace WishMaster.Service.Services
 
         }
 
+        /// <summary>
+        /// Returns user by id
+        /// </summary>
+        /// <param name="id">id of user</param>
+        /// <returns>User object / or null</returns>
         public User GetUserById(long id)
         {
             return Db.Users.Find(id);
         }
 
+        /// <summary>
+        /// Returns user by nick
+        /// </summary>
+        /// <param name="nick">nick of user</param>
+        /// <returns>User object / or null</returns>
         public User GetUserByNick(string nick)
         {
             return Db.Users.FirstOrDefault(x => x.Nick == nick);
         }
 
-        public long TryLogin(string nickoremail, string password)
+
+        /// <summary>
+        /// Gets a user by session id
+        /// </summary>
+        /// <param name="sessionid">session guid</param>
+        /// <returns>User object / or null</returns>
+        public User GetUserBySessionId(string sessionid)
         {
-            if (string.IsNullOrEmpty(nickoremail))
+            return Db.Users.FirstOrDefault(x => x.SessionId == sessionid);
+        }
+
+
+        /// <summary>
+        /// Tests user credentials against database and returns a LoginResult object
+        /// </summary>
+        /// <param name="model">Contains the user credentials</param>
+        /// <param name="mobile">Is this a mobile login?</param>
+        /// <returns>LoginResult object</returns>
+        public LoginResult TryLogin(LoginModel model, bool mobile = false)
+        {
+            var result = new LoginResult();
+
+            if (string.IsNullOrEmpty(model.username))
             {
-                return 0;
+                return result;
             }
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(model.password))
             {
-                return 0;
+                return result;
             }
-            var user = Db.Users.Where(x => x.Nick == nickoremail || x.Email == nickoremail)
-                               .Where(x => x.Password == password)
+            var user = Db.Users.Where(x => x.Nick == model.username || x.Email == model.username)
+                               .Where(x => x.Password == model.password)
                                .FirstOrDefault();
 
-            if(user == null)
+            if (user != null)
             {
-                return 0;
+                user.SessionId = Guid.NewGuid().ToString();
+                Db.SaveChanges();
+
+                result.Success = true;
+                result.UserId = user.Id;
+                if (mobile)
+                {
+                    result.SessionId = user.SessionId;
+                    result.Categories = Db.Categories.Select(x => new { id = x.Id, name = x.Name }).ToArray();
+                }
             }
-            return user.Id;
+            return result;
         }
     }
 }

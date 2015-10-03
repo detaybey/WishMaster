@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WishMaster.Service.ViewModels;
 
 namespace WishMaster.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
         // GET: Product
 
         [HttpPost]
-        public void Add()
+        public ActionResult Add(ProductAddModel model)
         {
+            var result = new ProductAddResult();
             if (Request.Files.Count > 0)
             {
-                var file = Request.Files[0];
-
-                if (file != null && file.ContentLength > 0)
+                var user = UserService.GetUserBySessionId(model.sessionid);
+                var product = ProductService.Add(user, model);
+                if (product != null)
                 {
-                    var tempPath = @"O:/Temp/KaanGonderdi.jpg";
+                    result.Success = true;
 
-                    if (System.IO.File.Exists(tempPath))
+                    var mediaRoot = HttpContext.Server.MapPath("~/Content/products");
+                    var savePath = System.IO.Path.Combine(mediaRoot, product.Id.ToString() + ".jpg");
+                    if (System.IO.File.Exists(savePath))
                     {
-                        System.IO.File.Delete(tempPath);
+                        System.IO.File.Delete(savePath);
                     }
-
-                    file.SaveAs(tempPath);
+                    Request.Files[0].SaveAs(savePath);
                 }
             }
+            return Json(result);
         }
     }
 }
