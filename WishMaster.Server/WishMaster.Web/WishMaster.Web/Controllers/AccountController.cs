@@ -6,21 +6,20 @@ using System.Web.Mvc;
 
 namespace WishMaster.Web.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
-        public ActionResult Index()
+        // GET: Account
+        public ActionResult Login()
         {
             return View();
         }
-
-        public ActionResult Checkout()
+        public ActionResult Registration()
         {
             return View();
         }
-        public ActionResult ProductDetail()
+        public ActionResult UserInfo()
         {
             return View();
         }
-
     }
 }
