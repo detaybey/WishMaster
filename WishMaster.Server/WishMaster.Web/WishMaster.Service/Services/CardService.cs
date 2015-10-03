@@ -55,11 +55,11 @@ namespace WishMaster.Service.Services
             return card;
         }
 
-        public void CheckLostStolen()
+        public void CheckLostStolen(Entities.Card card)
         {
             var service = new LostStolenService(Security.GetConsumerKey(), Security.GetPrivateKey(), Environments.Environment.SANDBOX);
             var accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 5343434343434343;
+            accountInquiry.AccountNumber = card.Number;
             Account account = service.GetLostStolen(accountInquiry);
         }
 
