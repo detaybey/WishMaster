@@ -302,20 +302,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
 
     public partial class PaymentRequestReceivingCard
     {
-
-        private long? accountNumberField;
-
-        public long? AccountNumber
-        {
-            get
-            {
-                return this.accountNumberField;
-            }
-            set
-            {
-                this.accountNumberField = value;
-            }
-        }
+        public string AccountNumber { get; set; }
     }
 
     public partial class PaymentRequestReceivingMapped
