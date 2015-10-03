@@ -1,4 +1,6 @@
 ﻿using MasterCard.SDK;
+using MasterCard.SDK.Services.FraudScoring;
+using MasterCard.SDK.Services.FraudScoring.Domain;
 using MasterCard.SDK.Services.LostStolen;
 using MasterCard.SDK.Services.LostStolen.Domain;
 using MasterCard.SDK.Services.MoneySend;
@@ -55,12 +57,72 @@ namespace WishMaster.Service.Services
             return card;
         }
 
-        public void CheckLostStolen(Entities.Card card)
+
+        /// <summary>
+        /// Checks the card against Lost/Stolen API
+        /// Returns if the card is stolen/problematic
+        /// </summary>
+        /// <param name="card">Card object</param>
+        /// <returns>True if card has a problem</returns>
+        public bool CheckLostStolen(Entities.Card card)
         {
             var service = new LostStolenService(Security.GetConsumerKey(), Security.GetPrivateKey(), Environments.Environment.SANDBOX);
             var accountInquiry = new AccountInquiry();
             accountInquiry.AccountNumber = card.Number;
             Account account = service.GetLostStolen(accountInquiry);
+
+            if (!string.IsNullOrEmpty(account.ReasonCode))
+            {
+                var log = new StolenLog()
+                {
+                    CardId = card.Id,
+                    Date = DateTime.Now,
+                    Flag = account.ReasonCode,
+                    FlagDesc = account.Reason
+                };
+                Db.StolenLogs.Add(log);
+                Db.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Checks the card against fraud API
+        /// Returns if the card is problematic
+        /// </summary>
+        /// <param name="card">Card object</param>
+        /// <param name="amount">amount of transaction</param>
+        /// <returns>True if card has a problem</returns>
+        public bool CheckFraud(Entities.Card card, long amount)
+        {
+            var service = new FraudScoringService(Environments.Environment.SANDBOX, Security.GetConsumerKey(), Security.GetPrivateKey());
+            var request = new ScoreLookupRequest();
+            request.TransactionDetail.CustomerIdentifier = 1996;
+            request.TransactionDetail.MerchantIdentifier = 123;
+            request.TransactionDetail.AccountNumber = Convert.ToInt64(card.Number);
+            request.TransactionDetail.AccountPrefix = Convert.ToInt32(card.Number.Substring(0,6));
+            request.TransactionDetail.AccountSuffix = Convert.ToInt16(card.Number.Substring(12, 4)); ;
+            request.TransactionDetail.TransactionDate = 1231;
+            request.TransactionDetail.TransactionTime = "035959";
+            request.TransactionDetail.BankNetReferenceNumber = "abcABC123";
+            request.TransactionDetail.Stan = 123456;
+
+            request.TransactionDetail.TransactionAmount = amount;
+            ScoreLookup scoreLookup = service.getScoreLookup(request);
+            if(scoreLookup.ScoreResponse.MatchIndicator != (short)MatchIndicatorStatus.NO_MATCH_FOUND)
+            {
+                var log = new FraudLog()
+                {
+                    CardId = card.Id,
+                    Date = DateTime.Now,
+                    Score = scoreLookup.ScoreResponse.FraudScore,
+                };
+                Db.FraudLogs.Add(log);
+                Db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -106,6 +168,14 @@ namespace WishMaster.Service.Services
             transferRequestCard.FundingAmount.Currency = 840;
 
             var userCard = order.Seller.Cards.First();
+            if (CheckLostStolen(userCard))
+            {
+                return;
+            }
+            if (CheckFraud(userCard, (long)usdAmount))
+            {
+                return;
+            }
 
             transferRequestCard.ReceiverName = order.Seller.FullName;
             transferRequestCard.ReceiverAddress.Line1 = order.Seller.AddressLine1;
@@ -156,6 +226,14 @@ namespace WishMaster.Service.Services
         {
             var buyer = order.Customer;
             var buyerCard = buyer.Cards.First();
+            if (CheckLostStolen(buyerCard))
+            {
+                return;
+            }
+            if (CheckFraud(buyerCard, usdAmount))
+            {
+                return;
+            }
 
             PaymentsApi.PublicApiKey = Security.GetSCPublicKey();
             PaymentsApi.PrivateApiKey = Security.GetSCPrivateKey();
@@ -193,4 +271,13 @@ namespace WishMaster.Service.Services
 
         }
     }
+
+    public enum MatchIndicatorStatus
+    {
+        SINGLE_TRANSACTION_MATCH = 1,
+        MULTIPLE_TRANS_IDENTICAL_CARD_MATCH = 2,
+        MULTIPLE_TRANS_DIFFERING_CARDS_MATCH = 3,
+        NO_MATCH_FOUND = 4
+    }
+
 }

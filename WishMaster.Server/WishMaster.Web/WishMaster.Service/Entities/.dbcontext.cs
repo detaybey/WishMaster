@@ -19,6 +19,7 @@ namespace WishMaster.Service.Entities
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<FraudLog> FraudLogs { get; set; }
+        public virtual DbSet<StolenLog> StolenLogs { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -86,6 +87,10 @@ namespace WishMaster.Service.Entities
                   .WithRequired(e => e.Card)
                   .WillCascadeOnDelete(true);
 
+            modelBuilder.Entity<Card>()
+                  .HasMany(e => e.StolenLogs)
+                  .WithRequired(e => e.Card)
+                  .WillCascadeOnDelete(true);
         }
     }
 }

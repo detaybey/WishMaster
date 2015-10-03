@@ -77,6 +77,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Score.cs" />
+    <Compile Include="Entities\StolenLog.cs" />
     <Compile Include="Entities\Transaction.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Migrations\201510031542571_Initial.cs" />
@@ -122,6 +123,10 @@
     <Compile Include="Migrations\201510032129581_ApprovedAddedToTransaction.cs" />
     <Compile Include="Migrations\201510032129581_ApprovedAddedToTransaction.Designer.cs">
       <DependentUpon>201510032129581_ApprovedAddedToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510032214272_FraudLogsAdded.cs" />
+    <Compile Include="Migrations\201510032214272_FraudLogsAdded.Designer.cs">
+      <DependentUpon>201510032214272_FraudLogsAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -173,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510032129581_ApprovedAddedToTransaction.resx">
       <DependentUpon>201510032129581_ApprovedAddedToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510032214272_FraudLogsAdded.resx">
+      <DependentUpon>201510032214272_FraudLogsAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
