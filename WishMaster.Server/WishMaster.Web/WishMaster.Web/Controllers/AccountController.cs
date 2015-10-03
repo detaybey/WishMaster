@@ -23,7 +23,7 @@ namespace WishMaster.Web.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult MobileLogin(LoginModel model)
+        public ActionResult Login(LoginModel model)
         {
             int LOGIN_DURATION_DAYS = 5;
             var result = UserService.TryLogin(model);
@@ -66,12 +66,7 @@ namespace WishMaster.Web.Controllers
             var result = UserService.TryLogin(model, true);
             return Json(result);
         }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
+     
         public ActionResult Registration()
         {
             return View();
