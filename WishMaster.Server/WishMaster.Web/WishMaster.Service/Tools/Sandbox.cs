@@ -36,5 +36,11 @@ namespace WishMaster.Service.Tools
             long b = random.Next(int.MaxValue) ^ 1000;
             return (a + b + DateTime.Now.Ticks).ToString("D19");
         }
+
+        public static string RandomPhoneNumber()
+        {
+            int p = random.Next(int.MaxValue);
+            return "1800" + p.ToString("D6");
+        }
     }
 }

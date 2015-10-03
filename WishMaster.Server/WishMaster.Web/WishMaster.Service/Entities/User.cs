@@ -31,6 +31,17 @@ namespace WishMaster.Service.Entities
         [StringLength(14)]
         public string Password { get; set; }
 
+        [StringLength(50)]
+        public string AddressLine1 { get; set;  }
+        [StringLength(50)]
+        public string AddressLine2 { get; set; }
+        [StringLength(25)]
+        public string AddressCity { get; set; }
+        [StringLength(10)]
+        public string AddressZip { get; set; }
+        [StringLength(3)]
+        public string AddressCountry { get; set; }
+
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Card> Cards { get; set; }
