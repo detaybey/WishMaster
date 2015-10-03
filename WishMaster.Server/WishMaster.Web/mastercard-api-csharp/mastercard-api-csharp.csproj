@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>csharp_mcapi</RootNamespace>
+    <AssemblyName>csharp-mcapi</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MasterCard\SDK\Connector.cs" />
+    <Compile Include="MasterCard\SDK\Environments.cs" />
+    <Compile Include="MasterCard\SDK\MCApiRuntimeException.cs" />
+    <Compile Include="MasterCard\SDK\OAuthParameters.cs" />
+    <Compile Include="MasterCard\SDK\QueryParameterComparer.cs" />
+    <Compile Include="MasterCard\SDK\Serializer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Common\Domain\RequestTokenResponse.cs" />
+    <Compile Include="MasterCard\SDK\Services\Common\RequestTokenService.cs" />
+    <Compile Include="MasterCard\SDK\Services\FraudScoring\Domain\scoreLookup.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\FraudScoring\Domain\scoreLookupRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\FraudScoring\FraudScoringService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\AtmLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\CountryAtmLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\CountryMerchantLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\CountrySubdivisionAtmLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\CountrySubdivisionMerchantLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\atms.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\categories.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\countries.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\countrySubdivisions.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\merchants.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\AtmLocationRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\CountryMerchantLocationRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\CountrySubdivisionAtmLocationRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\CountrySubdivisionMerchantLocationRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\Details.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\Domain\Options\MerchantLocationsRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\MerchantCategoriesService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Location\MerchantLocationService.cs" />
+    <Compile Include="MasterCard\SDK\Services\LostStolen\Domain\account.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\LostStolen\Domain\accountInquiry.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\LostStolen\LostStolenService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Match\Domain\match.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Match\Domain\Options\TerminationInquiryHistoryOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Match\Domain\Options\TerminationInquiryRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Match\TerminationInquiryHistoryService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Match\TerminationInquiryService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\ActivateService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\DeliveryChannelsService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\activateRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\deliveryChannels.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\deviceTransactions.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\generalizedProvisioningRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\ProvisioningDomainMarker.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\reasonCodes.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\resendCodeResults.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\resendRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\response.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\responses.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\searchRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\searchResponse.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\swapPANRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\swapProvisioningRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\systemStatusResponses.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\Domain\transactionRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\MappingSearchService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\ProvisioningService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\ReasonCodesService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\ResendActivationCodeService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\RetrieveTransactionsService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\SwapPANService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MDES\SystemStatusService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MerchantIdentifier\Domain\MerchantIds.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MerchantIdentifier\Domain\Options\MerchantIdentifierRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\MerchantIdentifier\MerchantIdentifierService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\CardMappingService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\DeleteSubscriberIdService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\CreateMapping.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\CreateMappingRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\DeleteMapping.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\DeleteSubscriberId.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\DeleteSubscriberIdRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\InquireMapping.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\InquireMappingRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\Options\DeleteMappingRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\Options\UpdateMappingRequestOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\PanEligibility.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\PanEligibilityRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\PaymentRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\Transfer.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\TransferRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\TransferReversal.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\TransferReversalRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\UpdateMapping.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\Domain\UpdateMappingRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\PanEligibilityService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\TransferReversalService.cs" />
+    <Compile Include="MasterCard\SDK\Services\MoneySend\TransferService.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerReversalService\Domain\repowerReversal.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerReversalService\Domain\repowerReversalRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerReversalService\RepowerReversalService.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerService\Domain\repower.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerService\Domain\repowerRequest.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\RepowerService\RepowerService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\CategoriesLocalFavoritesService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\CountriesLocalFavoritesService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\CountrySubdivisionsLocalFavoritesService.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\Categories.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\Countries.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\CountrySubdivisions.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\Options\CountrySubdivisionsLocalFavoritesOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\Options\RestaurantsLocalFavoritesOptions.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\Domain\Restaurants.designer.cs" />
+    <Compile Include="MasterCard\SDK\Services\Restaurants\RestaurantsLocalFavoritesService.cs" />
+    <Compile Include="MasterCard\SDK\SortedSet.cs" />
+    <Compile Include="MasterCard\SDK\Util\URLUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishMaster.Web", "WishMaster.Web\WishMaster.Web.csproj", "{8012DA5F-F15D-4A2D-9DDF-226675CA61CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishMaster.Service", "WishMaster.Service\WishMaster.Service.csproj", "{E2460E00-3734-45EE-A708-BAA465E0B507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mastercard-api-csharp", "mastercard-api-csharp\mastercard-api-csharp.csproj", "{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishMaster.Tests", "WishMaster.Tests\WishMaster.Tests.csproj", "{6DEE9321-264F-440D-9277-74E7FA8F30EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{8012DA5F-F15D-4A2D-9DDF-226675CA61CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8012DA5F-F15D-4A2D-9DDF-226675CA61CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8012DA5F-F15D-4A2D-9DDF-226675CA61CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2460E00-3734-45EE-A708-BAA465E0B507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2460E00-3734-45EE-A708-BAA465E0B507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2460E00-3734-45EE-A708-BAA465E0B507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2460E00-3734-45EE-A708-BAA465E0B507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137B4C78-C360-47C1-9BAC-5E5E9384A6CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DEE9321-264F-440D-9277-74E7FA8F30EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DEE9321-264F-440D-9277-74E7FA8F30EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DEE9321-264F-440D-9277-74E7FA8F30EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DEE9321-264F-440D-9277-74E7FA8F30EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
