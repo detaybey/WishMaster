@@ -143,7 +143,7 @@ namespace Test.Services
             paymentRequestCard.SenderAddress.PostalCode = 22207;
             paymentRequestCard.SenderAddress.Country = "USA";
 
-            paymentRequestCard.ReceivingCard.AccountNumber = 5184680430000014L;
+            paymentRequestCard.ReceivingCard.AccountNumber = "5184680430000014";
             paymentRequestCard.ReceivingAmount.Value = 11;
             paymentRequestCard.ReceivingAmount.Currency = 484;
 

@@ -27,6 +27,9 @@ namespace WishMaster.Service.Entities
         [StringLength(20)]
         public string Nick { get; set; }
 
+        [StringLength(60)]
+        public string FullName { get; set; }
+
         // TODO: Hash+Salt this
         [StringLength(14)]
         public string Password { get; set; }

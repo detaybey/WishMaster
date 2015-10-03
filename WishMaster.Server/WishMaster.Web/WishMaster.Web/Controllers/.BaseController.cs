@@ -17,13 +17,15 @@ namespace WishMaster.Web.Controllers
 
         //Services // Todo: Use a dependency injection library
         public UserService UserService { get; set; }
-
+        public ProductService ProductService { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
         {
             // Set Services 
             Db = new WishMasterDataContext();
             UserService = new UserService(Db);
+            ProductService = new ProductService(Db);
+
             MyUser = UserService.GetUserByNick("system");
 
             base.Initialize(requestContext);

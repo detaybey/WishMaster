@@ -41,7 +41,8 @@ namespace WishMaster.Service.Migrations
                     AddressLine2 = "",
                     AddressCity = "OFallon",
                     AddressZip = "63368",
-                    AddressState = "MO",                              AddressCountry = "USA"
+                    AddressState = "MO",
+                    AddressCountry = "USA"
                 }
 
             );
