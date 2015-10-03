@@ -5,6 +5,9 @@
 //  Created by Kaan on 10/3/15.
 //  Copyright © 2015 genie. All rights reserved.
 //
+// sudo nano /etc/hosts
+// NSAppTransportSecurity dictionary
+// NSAllowsArbitraryLoads true
 
 import UIKit
 
@@ -46,7 +49,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://172.29.4.3/account/login/")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://172.29.4.211/account/login/")!)
         
         let session = NSURLSession.sharedSession()
         
