@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WishMaster.Service.ViewModels;
 
 namespace WishMaster.Web.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
-        public ActionResult Login()
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
         {
-            return View();
+            var result = new LoginResult() { Success = true };
+            if (string.IsNullOrEmpty(model.username) || string.IsNullOrEmpty(model.password))
+            {
+                result.Success = false;
+            }
+            return Json(result);
         }
+
         public ActionResult Registration()
         {
             return View();
