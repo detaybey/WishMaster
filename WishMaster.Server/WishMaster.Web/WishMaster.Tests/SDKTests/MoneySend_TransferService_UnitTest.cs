@@ -22,57 +22,61 @@ namespace Test.Services
             service = new TransferService(Security.GetConsumerKey(), Security.GetPrivateKey(), Environments.Environment.SANDBOX);
         }
 
-        //        [TestMethod]
-        //        public void TestTransferRequestCardTest()
-        //        {
-        //            TransferRequest transferRequestCard = new TransferRequest();
-        //            transferRequestCard.LocalDate = "1212";
-        //            transferRequestCard.LocalTime = "161222";
-        //            transferRequestCard.TransactionReference = 4000000001010102028L;
-        //            transferRequestCard.SenderName = "John Doe";
-        //            transferRequestCard.SenderAddress.Line1 = "123 Main Street";
-        //            transferRequestCard.SenderAddress.Line2 = "#5A";
-        //            transferRequestCard.SenderAddress.City = "Arlington";
-        //            transferRequestCard.SenderAddress.CountrySubdivision = "VA";
-        //            transferRequestCard.SenderAddress.PostalCode = 22207;
-        //            transferRequestCard.SenderAddress.Country = "USA";
-        //            transferRequestCard.FundingCard.AccountNumber = 5184680430000006L;
-        //            transferRequestCard.FundingCard.ExpiryMonth = 11;
-        //            transferRequestCard.FundingCard.ExpiryYear = 2014;
-        //            transferRequestCard.FundingUCAF = "MjBjaGFyYWN0ZXJqdW5rVUNBRjU=1111";
-        //            transferRequestCard.FundingMasterCardAssignedId = 123456;
-        //            transferRequestCard.FundingAmount.Value = 15000;
-        //            transferRequestCard.FundingAmount.Currency = 840;
-        //            transferRequestCard.ReceiverName = "Jose Lopez";
-        //            transferRequestCard.ReceiverAddress.Line1 = "Pueblo Street";
-        //            transferRequestCard.ReceiverAddress.Line2 = "PO BOX 12";
-        //            transferRequestCard.ReceiverAddress.City = "El PASO";
-        //            transferRequestCard.ReceiverAddress.CountrySubdivision = "TX";
-        //            transferRequestCard.ReceiverAddress.PostalCode = 79906;
-        //            transferRequestCard.ReceiverAddress.Country = "USA";
-        //            transferRequestCard.ReceiverPhone = 1800639426;
-        //            transferRequestCard.ReceivingCard.AccountNumber = 5184680430000006L;
-        //            transferRequestCard.ReceivingAmount.Value = 182206;
-        //            transferRequestCard.ReceivingAmount.Currency = 484;
-        //            transferRequestCard.Channel = "W";
-        //            transferRequestCard.UCAFSupport = false;
-        //            transferRequestCard.ICA = "009674";
-        //            transferRequestCard.ProcessorId = 9000000442L;
-        //            transferRequestCard.RoutingAndTransitNumber = 990442082;
-        //            transferRequestCard.CardAcceptor.Name = "My Local Bank";
-        //            transferRequestCard.CardAcceptor.City = "Saint Louis";
-        //            transferRequestCard.CardAcceptor.State = "MO";
-        //            transferRequestCard.CardAcceptor.PostalCode = 63101;
-        //            transferRequestCard.CardAcceptor.Country = "USA";
-        //            transferRequestCard.TransactionDesc = "P2P";
-        //            transferRequestCard.MerchantId = 123456;
-        //            Transfer transfer = service.GetTransfer(transferRequestCard);
-        //            Assert.IsTrue(transfer != null);
-        //            Assert.IsTrue(transfer.TransactionReference > 0);
-        //            Assert.IsTrue(transfer.TransactionHistory != null);
-        //            Assert.IsTrue(transfer.TransactionHistory[0].Response.Code == 00);
-        //            Assert.IsTrue(transfer.TransactionHistory[1].Response.Code == 00);
-        //        }
+        [TestMethod]
+        public void TestTransferRequestCardTest()
+        {
+            TransferRequest transferRequestCard = new TransferRequest();
+            transferRequestCard.LocalDate = Sandbox.CurrentMonthTwoDigits() + Sandbox.CurrentDayTwoDigits();
+            transferRequestCard.LocalTime = Sandbox.CurrentHourSixDigits();
+
+            transferRequestCard.TransactionReference = Sandbox.GenerateLongRandomNumeric();
+            transferRequestCard.SenderName = "John Doe";
+            transferRequestCard.SenderAddress.Line1 = "123 Main Street";
+            transferRequestCard.SenderAddress.Line2 = "#5A";
+            transferRequestCard.SenderAddress.City = "Arlington";
+            transferRequestCard.SenderAddress.CountrySubdivision = "VA";
+            transferRequestCard.SenderAddress.PostalCode = "22207";
+            transferRequestCard.SenderAddress.Country = "USA";
+            transferRequestCard.FundingCard.AccountNumber = "5184680430000006";
+            transferRequestCard.FundingCard.ExpiryMonth = "11";
+            transferRequestCard.FundingCard.ExpiryYear = "2017";
+            transferRequestCard.FundingUCAF = "MjBjaGFyYWN0ZXJqdW5rVUNBRjU=1111";
+            transferRequestCard.FundingMasterCardAssignedId = 123456;
+            transferRequestCard.FundingAmount.Value = 150;
+            transferRequestCard.FundingAmount.Currency = 840;
+
+
+
+            transferRequestCard.ReceiverName = "Jose Lopez";
+            transferRequestCard.ReceiverAddress.Line1 = "Pueblo Street";
+            transferRequestCard.ReceiverAddress.Line2 = "PO BOX 12";
+            transferRequestCard.ReceiverAddress.City = "El PASO";
+            transferRequestCard.ReceiverAddress.CountrySubdivision = "TX";
+            transferRequestCard.ReceiverAddress.PostalCode = "79906";
+            transferRequestCard.ReceiverAddress.Country = "USA";
+            transferRequestCard.ReceiverPhone = "1800639426";
+            transferRequestCard.ReceivingCard.AccountNumber = "5184680430000006";
+            transferRequestCard.ReceivingAmount.Value = 182206;
+            transferRequestCard.ReceivingAmount.Currency = 484;
+            transferRequestCard.Channel = "W";
+            transferRequestCard.UCAFSupport = false;
+            transferRequestCard.ICA = "009674";
+            transferRequestCard.ProcessorId = 9000000442L;
+            transferRequestCard.RoutingAndTransitNumber = 990442082;
+            transferRequestCard.CardAcceptor.Name = "My Local Bank";
+            transferRequestCard.CardAcceptor.City = "Saint Louis";
+            transferRequestCard.CardAcceptor.State = "MO";
+            transferRequestCard.CardAcceptor.PostalCode = "63101";
+            transferRequestCard.CardAcceptor.Country = "USA";
+            transferRequestCard.TransactionDesc = "P2P";
+            transferRequestCard.MerchantId = 123456;
+            Transfer transfer = service.GetTransfer(transferRequestCard);
+            Assert.IsTrue(transfer != null);
+            Assert.IsTrue(transfer.TransactionReference > 0);
+            Assert.IsTrue(transfer.TransactionHistory != null);
+            Assert.IsTrue(transfer.TransactionHistory[0].Response.Code == 00);
+            Assert.IsTrue(transfer.TransactionHistory[1].Response.Code == 00);
+        }
 
         //        [TestMethod]
         //        public void TestTransferRequestMappedTest()

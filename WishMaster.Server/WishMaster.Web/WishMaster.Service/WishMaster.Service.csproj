@@ -99,6 +99,30 @@
     <Compile Include="Migrations\201510031842513_UserFullNameAdded.Designer.cs">
       <DependentUpon>201510031842513_UserFullNameAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510031937411_RequestIdAndReferenceAddedToTransaction.cs" />
+    <Compile Include="Migrations\201510031937411_RequestIdAndReferenceAddedToTransaction.Designer.cs">
+      <DependentUpon>201510031937411_RequestIdAndReferenceAddedToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031941341_AcceptorInfoAddedToCard.cs" />
+    <Compile Include="Migrations\201510031941341_AcceptorInfoAddedToCard.Designer.cs">
+      <DependentUpon>201510031941341_AcceptorInfoAddedToCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031955429_PhoneAddedToUser.cs" />
+    <Compile Include="Migrations\201510031955429_PhoneAddedToUser.Designer.cs">
+      <DependentUpon>201510031955429_PhoneAddedToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510032027449_SessionIdAddedToUser.cs" />
+    <Compile Include="Migrations\201510032027449_SessionIdAddedToUser.Designer.cs">
+      <DependentUpon>201510032027449_SessionIdAddedToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510032128172_PaymentIdandAuthCodeAddedToTransaction.cs" />
+    <Compile Include="Migrations\201510032128172_PaymentIdandAuthCodeAddedToTransaction.Designer.cs">
+      <DependentUpon>201510032128172_PaymentIdandAuthCodeAddedToTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510032129581_ApprovedAddedToTransaction.cs" />
+    <Compile Include="Migrations\201510032129581_ApprovedAddedToTransaction.Designer.cs">
+      <DependentUpon>201510032129581_ApprovedAddedToTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\.BaseService.cs" />
@@ -131,6 +155,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510031842513_UserFullNameAdded.resx">
       <DependentUpon>201510031842513_UserFullNameAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031937411_RequestIdAndReferenceAddedToTransaction.resx">
+      <DependentUpon>201510031937411_RequestIdAndReferenceAddedToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031941341_AcceptorInfoAddedToCard.resx">
+      <DependentUpon>201510031941341_AcceptorInfoAddedToCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031955429_PhoneAddedToUser.resx">
+      <DependentUpon>201510031955429_PhoneAddedToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510032027449_SessionIdAddedToUser.resx">
+      <DependentUpon>201510032027449_SessionIdAddedToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510032128172_PaymentIdandAuthCodeAddedToTransaction.resx">
+      <DependentUpon>201510032128172_PaymentIdandAuthCodeAddedToTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510032129581_ApprovedAddedToTransaction.resx">
+      <DependentUpon>201510032129581_ApprovedAddedToTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

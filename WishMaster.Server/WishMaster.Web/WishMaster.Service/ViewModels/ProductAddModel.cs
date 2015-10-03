@@ -9,6 +9,7 @@ namespace WishMaster.Service.ViewModels
 {
     public class ProductAddModel
     {
+        public string sessionid { get; set; }
         public string title { get; set; }
         public string description { get; set;  }
         public long categoryid { get; set; }
@@ -18,7 +19,6 @@ namespace WishMaster.Service.ViewModels
         public float lat { get; set; }
         public float lng { get; set; }
         public int quantity { get; set; } 
-        public int price { get; set; }
-        public HttpPostedFileBase file { get; set; }
+        public int price { get; set; }     
     }
 }

@@ -39,6 +39,18 @@ namespace WishMaster.Service.Services
             return Db.Users.FirstOrDefault(x => x.Nick == nick);
         }
 
+
+        /// <summary>
+        /// Gets a user by session id
+        /// </summary>
+        /// <param name="sessionid">session guid</param>
+        /// <returns>User object / or null</returns>
+        public User GetUserBySessionId(string sessionid)
+        {
+            return Db.Users.FirstOrDefault(x => x.SessionId == sessionid);
+        }
+
+
         /// <summary>
         /// Tests user credentials against database and returns a LoginResult object
         /// </summary>
@@ -63,10 +75,14 @@ namespace WishMaster.Service.Services
 
             if (user != null)
             {
+                user.SessionId = Guid.NewGuid().ToString();
+                Db.SaveChanges();
+
                 result.Success = true;
                 result.UserId = user.Id;
                 if (mobile)
                 {
+                    result.SessionId = user.SessionId;
                     result.Categories = Db.Categories.Select(x => new { id = x.Id, name = x.Name }).ToArray();
                 }
             }

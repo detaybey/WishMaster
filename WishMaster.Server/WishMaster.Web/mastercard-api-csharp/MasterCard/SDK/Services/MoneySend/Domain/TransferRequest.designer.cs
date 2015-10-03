@@ -22,8 +22,6 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
 
         private String localTimeField;
 
-        private long? transactionReferenceField;
-
         private String senderNameField;
 
         private TransferRequestSenderAddress senderAddressField;
@@ -104,18 +102,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public long? TransactionReference
-        {
-            get
-            {
-                return this.transactionReferenceField;
-            }
-            set
-            {
-                this.transactionReferenceField = value;
-            }
-        }
-
+        public string TransactionReference { get; set; }
         public String SenderName
         {
             get
@@ -236,17 +223,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public int? ReceiverPhone
-        {
-            get
-            {
-                return this.receiverPhoneField;
-            }
-            set
-            {
-                this.receiverPhoneField = value;
-            }
-        }
+        public string ReceiverPhone { get; set; }
 
         public TransferRequestReceivingCard ReceivingCard
         {
@@ -432,17 +409,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public int? PostalCode
-        {
-            get
-            {
-                return this.postalCodeField;
-            }
-            set
-            {
-                this.postalCodeField = value;
-            }
-        }
+        public string PostalCode { get; set; }
 
         public String Country
         {
@@ -459,48 +426,9 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
 
     public partial class TransferRequestFundingCard
     {
-
-        private long? accountNumberField;
-
-        private int? expiryMonthField;
-
-        private int? expiryYearField;
-
-        public long? AccountNumber
-        {
-            get
-            {
-                return this.accountNumberField;
-            }
-            set
-            {
-                this.accountNumberField = value;
-            }
-        }
-
-        public int? ExpiryMonth
-        {
-            get
-            {
-                return this.expiryMonthField;
-            }
-            set
-            {
-                this.expiryMonthField = value;
-            }
-        }
-
-        public int? ExpiryYear
-        {
-            get
-            {
-                return this.expiryYearField;
-            }
-            set
-            {
-                this.expiryYearField = value;
-            }
-        }
+        public string AccountNumber { get; set; }
+        public string ExpiryMonth { get; set; }
+        public string ExpiryYear { get; set; }
     }
 
     public partial class TransferRequestFundingMapped
@@ -564,33 +492,8 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
     public partial class TransferRequestFundingAmount
     {
 
-        private int? valueField;
-
-        private int? currencyField;
-
-        public int? Value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
-
-        public int? Currency
-        {
-            get
-            {
-                return this.currencyField;
-            }
-            set
-            {
-                this.currencyField = value;
-            }
-        }
+        public decimal Value { get; set; }
+        public int? Currency { get; set; }
     }
 
     public partial class TransferRequestReceiverAddress
@@ -656,17 +559,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public int? PostalCode
-        {
-            get
-            {
-                return this.postalCodeField;
-            }
-            set
-            {
-                this.postalCodeField = value;
-            }
-        }
+        public string PostalCode { get; set; }
 
         public String Country
         {
@@ -683,52 +576,15 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
 
     public partial class TransferRequestReceivingCard
     {
-
-        private long? accountNumberField;
-
-        public long? AccountNumber
-        {
-            get
-            {
-                return this.accountNumberField;
-            }
-            set
-            {
-                this.accountNumberField = value;
-            }
-        }
+        public string AccountNumber { get; set; }
     }
 
     public partial class TransferRequestReceivingAmount
     {
 
-        private int? valueField;
+        public decimal Value { get; set; }
 
-        private int? currencyField;
-
-        public int? Value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
-
-        public int? Currency
-        {
-            get
-            {
-                return this.currencyField;
-            }
-            set
-            {
-                this.currencyField = value;
-            }
-        }
+        public int? Currency { get; set; }
     }
 
     public partial class TransferRequestCardAcceptor
@@ -780,17 +636,7 @@ namespace MasterCard.SDK.Services.MoneySend.Domain
             }
         }
 
-        public int? PostalCode
-        {
-            get
-            {
-                return this.postalCodeField;
-            }
-            set
-            {
-                this.postalCodeField = value;
-            }
-        }
+        public string PostalCode { get; set; }
 
         public String Country
         {

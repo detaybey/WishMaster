@@ -50,10 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SDKTests\FraudScoringServiceTest.cs" />
     <Compile Include="SDKTests\LostStolen_UnitTest.cs" />
-    <Compile Include="SDKTests\MoneySend_CardMappingService_UnitTest.cs" />
-    <Compile Include="SDKTests\MoneySend_DeleteSubscriberIdService_UnitTest.cs" />
     <Compile Include="SDKTests\MoneySend_PanEligibilityService_UnitTest.cs" />
-    <Compile Include="SDKTests\MoneySend_TransferReversalService_UnitTest.cs" />
     <Compile Include="SDKTests\MoneySend_TransferService_UnitTest.cs" />
     <Compile Include="SDKTests\Simplify_TESTS.cs" />
   </ItemGroup>

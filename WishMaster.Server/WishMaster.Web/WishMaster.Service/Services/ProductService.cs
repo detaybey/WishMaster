@@ -23,11 +23,13 @@ namespace WishMaster.Service.Services
         /// <param name="model">Product information</param>
         /// <param name="mediaRoot">Root path for photo</param>
         /// <returns>New created product record</returns>
-        public Product Add(User user, ProductAddModel model, string mediaRoot)
-        {
-            if (model.file == null)
+        public Product Add(User user, ProductAddModel model)
+        { 
+            // if no category was picked select other
+            if(model.categoryid == 0)
             {
-                return null;
+                var other = Db.Categories.FirstOrDefault(x => x.Name == "Other");
+                model.categoryid = other.Id;
             }
 
             var product = new Product()
@@ -42,17 +44,11 @@ namespace WishMaster.Service.Services
                 Quantity = model.quantity,
                 SellerId = user.Id,
                 Title = model.title,
-                UsdPrice = model.price
+                UsdPrice = model.price                 
             };
             Db.Products.Add(product);
             Db.SaveChanges();
 
-            var savePath = System.IO.Path.Combine(mediaRoot, product.Id.ToString() + ".jpg");
-            if (System.IO.File.Exists(savePath))
-            {
-                System.IO.File.Delete(savePath);
-            }
-            model.file.SaveAs(savePath);
             return product;
         }
     }

@@ -30,22 +30,43 @@ namespace WishMaster.Service.Migrations
               new Category { Name = "Other" }
             );
 
-            context.Users.AddOrUpdate(
-                p => p.Nick,
-                new User
-                {
-                    Nick = "system",
-                    Email = "genie@wishmaster.com",
-                    Password = "x",
-                    AddressLine1 = "123 Main Street",
-                    AddressLine2 = "",
-                    AddressCity = "OFallon",
-                    AddressZip = "63368",
-                    AddressState = "MO",
-                    AddressCountry = "USA"
-                }
+            //context.Users.AddOrUpdate(
+            //    p => p.Nick,
+            //    new User
+            //    {
+            //        Nick = "system",
+            //        FullName = "Wish Master",
+            //        Email = "genie@wishmaster.com",
+            //        Password = "x",
+            //        AddressLine1 = "123 Main Street",
+            //        AddressLine2 = "",
+            //        AddressCity = "OFallon",
+            //        AddressZip = "63368",
+            //        AddressState = "MO",
+            //        AddressCountry = "USA",
+            //        Phone = "1800639426",
+            //        SessionId = "12345678-1234-1234-1234-123456789abc"
+            //    };
+            //);
 
-            );
+            //var systemUser = context.Users.FirstOrDefault(x => x.Nick == "system");
+            //if (systemUser.Cards.Count() == 0)
+            //{
+            //    var systemPaymentCard = new Card()
+            //    {
+            //        Number = "5184680430000006",
+            //        ExpMonth = "11",
+            //        ExpYear = "2017",
+            //        CCV = "101",
+            //        AcceptorName = "Great Bank",
+            //        AcceptorState = "MO",
+            //        AcceptorPostalCode = "63101",
+            //        AcceptorCity = "Saint Louis",
+            //        AcceptorCountry = "USA"
+            //    };
+            //    systemUser.Cards.Add(systemPaymentCard);
+            //    context.SaveChanges();
+            //}
         }
     }
 }
