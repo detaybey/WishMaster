@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ui large breadcrumb" style="margin-bottom:10px">
+    <a class="section">Home</a>
+    <i class="right chevron icon divider"></i>
+    <a class="section">Fashion</a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">Bag</div>
+</div>
+<div class="ui three column divided grid" >
+    <div class="stretched row">
+        <div class="five wide column" style="padding:0;">
+
+            <div class="ui red segment">
+                <div class="ui huge header">Yellow Bag </div>
+                <img class="ui fluid image" src="~/Content/sample/kapak.jpg">
+                <div class="ui bottom attached label">Product Photo Taken @@ New York City</div>
+
+            </div>
+            <div class="ui basic segment" style="padding:0;">
+                <div class="ui left labeled button" tabindex="0" style="margin-right:20px">
+                    <a class="ui basic right pointing label">
+                        2,048
+                    </a>
+                    <div class="ui button">
+                        <i class="heart icon"></i> Like
+                    </div>
+                </div>
+                <button class="ui circular facebook icon button">
+                    <i class="facebook icon"></i>
+                </button>
+                <button class="ui circular twitter icon button">
+                    <i class="twitter icon"></i>
+                </button>
+                <button class="ui circular google plus icon button">
+                    <i class="google plus icon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui basic segment" style="padding:0">
+                <table class="ui orange table">
+                    <thead>
+                        <tr>
+                            <th>Item Info</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Title</td>
+                            <td>Blue, bottle cap</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>Little Worthy</td>
+                        </tr>
+                        <tr>
+                            <td>From</td>
+                            <td>İstanbul</td>
+                        </tr>
+                        <tr>
+                            <td>To</td>
+                            <td>Sanfrancisco</td>
+                        </tr>
+                        <tr>
+                            <td>Ends in</td>
+                            <td>5 days</td>
+                        </tr>
+                        <tr>
+                            <td>Earliest Shipping Date</td>
+                            <td>8 days</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="ui basic segment" style="padding:0">
+                    <table class="ui orange table">
+                        <thead>
+                            <tr>
+                                <th>Purchase </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><h2>Price</h2></td>
+                                <td style="text-align:right"><h2>40 USD</h2></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="ui selection dropdown fluid">
+                                        <input type="hidden" name="gender">
+                                        <i class="dropdown icon"></i>
+                                        <div class="default text">Quatity</div>
+                                        <div class="menu">
+                                            <div class="item" data-value="1">1</div>
+                                            <div class="item" data-value="2">2</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><button class="ui orange button fluid">
+                                        <i class="cart icon"></i>Buy Now</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="three wide column " style="padding:0;box-shadow:none">
+
+            <div class="ui basic segment" style="padding:0">
+                <table class="ui orange table">
+                    <thead>
+                        <tr>
+                            <th>Seller Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="ui red ribbon label">
+                                    Emre NY
+                                </div>
+                                <div class="ui relaxed list">
+                                    <div class="item" style="text-align:center">
+
+                                        <img class="ui avatar tiny image" src="~/Content/avatar/Emre.png">
+                                        <div class="content">
+                                            <div class="description">Last photo taken at <a><b>New York City</b></a> 3 days ago.</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ui label fluid">
+                                    <i class="star red icon"></i>
+                                    5
+                                    <a class="detail"> Positive Feedback</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ui label fluid">
+                                    <i class="Add to cart orange icon"></i>
+                                    100
+                                    <a class="detail"> Successfull Sales</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ui label fluid">
+                                    <i class="heart red icon"></i>
+                                    10
+                                    <a class="detail"> Successfull Buy</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ui label fluid">
+                                    <i class="marker orange icon"></i>
+                                    5
+                                    <a class="detail"> different locations</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

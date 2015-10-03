@@ -159,25 +159,25 @@ namespace MasterCard.SDK
         protected Dictionary<string, string> doRequest(String httpsURL, String requestMethod,
                             OAuthParameters oparams, String body)
         {
+            if (privateKey == null)
+            {
+                throw new MCApiRuntimeException(NULL_PRIVATEKEY_ERROR_MESSAGE);
+            }
+            if (body != null && body.Length > 0)
+            {
+                oparams = setOauthBodyHashParameter(body, oparams);
+            }
+
+            HttpWebRequest con = setupConnection(httpsURL, requestMethod, oparams, body);
+
+            if (body != null)
+            {
+                writeBodyToConnection(body, con);
+            }
+
+            return checkForErrorsAndReturnRepsonse(con);
             try
             {
-                if (privateKey == null)
-                {
-                    throw new MCApiRuntimeException(NULL_PRIVATEKEY_ERROR_MESSAGE);
-                }
-                if (body != null && body.Length > 0)
-                {
-                    oparams = setOauthBodyHashParameter(body, oparams);
-                }
-
-                HttpWebRequest con = setupConnection(httpsURL, requestMethod, oparams, body);
-
-                if (body != null)
-                {
-                    writeBodyToConnection(body, con);
-                }
-
-                return checkForErrorsAndReturnRepsonse(con);
             }
             catch (Exception e)
             {

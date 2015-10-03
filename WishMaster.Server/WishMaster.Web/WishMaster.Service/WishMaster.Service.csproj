@@ -30,7 +30,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.2.2.5\lib\net45\Mono.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.2.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.2.2.5\lib\net45\Npgsql.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql.EntityFramework, Version=2.2.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.EntityFramework.2.2.5\lib\net45\Npgsql.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,8 +62,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\.dbcontext.cs" />
+    <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Feedback.cs" />
+    <Compile Include="Entities\FraudLog.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Score.cs" />
+    <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\201510031542571_Initial.cs" />
+    <Compile Include="Migrations\201510031542571_Initial.Designer.cs">
+      <DependentUpon>201510031542571_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031555155_FeedbackAdded.cs" />
+    <Compile Include="Migrations\201510031555155_FeedbackAdded.Designer.cs">
+      <DependentUpon>201510031555155_FeedbackAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031642035_UserAddressAdded.cs" />
+    <Compile Include="Migrations\201510031642035_UserAddressAdded.Designer.cs">
+      <DependentUpon>201510031642035_UserAddressAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510031706009_UserAddressStateAdded.cs" />
+    <Compile Include="Migrations\201510031706009_UserAddressStateAdded.Designer.cs">
+      <DependentUpon>201510031706009_UserAddressStateAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\.BaseService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510031542571_Initial.resx">
+      <DependentUpon>201510031542571_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031555155_FeedbackAdded.resx">
+      <DependentUpon>201510031555155_FeedbackAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031642035_UserAddressAdded.resx">
+      <DependentUpon>201510031642035_UserAddressAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510031706009_UserAddressStateAdded.resx">
+      <DependentUpon>201510031706009_UserAddressStateAdded.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

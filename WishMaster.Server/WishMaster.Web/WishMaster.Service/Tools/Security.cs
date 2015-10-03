@@ -37,5 +37,14 @@ namespace WishMaster.Service.Tools
             return ConfigurationManager.AppSettings["MC_API_CONSUMER_KEY"] as string;
         }
 
+        public static string GetSCPublicKey()
+        {
+            return ConfigurationManager.AppSettings["SIMPLY_PUBLIC_KEY"] as string;
+        }
+
+        public static string GetSCPrivateKey()
+        {
+            return ConfigurationManager.AppSettings["SIMPLY_PRIVATE_KEY"] as string;
+        }
     }
 }
