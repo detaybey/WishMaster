@@ -7,7 +7,7 @@ using WishMaster.Service.Entities;
 
 namespace WishMaster.Service.Services
 {
-   public class UserService : BaseService
+    public class UserService : BaseService
     {
         public UserService(WishMasterDataContext db)
                  : base(db)
@@ -23,6 +23,27 @@ namespace WishMaster.Service.Services
         public User GetUserByNick(string nick)
         {
             return Db.Users.FirstOrDefault(x => x.Nick == nick);
+        }
+
+        public long TryLogin(string nickoremail, string password)
+        {
+            if (string.IsNullOrEmpty(nickoremail))
+            {
+                return 0;
+            }
+            if (string.IsNullOrEmpty(password))
+            {
+                return 0;
+            }
+            var user = Db.Users.Where(x => x.Nick == nickoremail || x.Email == nickoremail)
+                               .Where(x => x.Password == password)
+                               .FirstOrDefault();
+
+            if(user == null)
+            {
+                return 0;
+            }
+            return user.Id;
         }
     }
 }
