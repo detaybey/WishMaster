@@ -15,6 +15,7 @@
 		8CA6F4EF1BBFF62A00E8F844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6F4ED1BBFF62A00E8F844 /* LaunchScreen.storyboard */; };
 		8CA6F4FA1BBFF62A00E8F844 /* WishMaster_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6F4F91BBFF62A00E8F844 /* WishMaster_IOSUITests.swift */; };
 		8CA6F5051BC00C8500E8F844 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6F5041BC00C8500E8F844 /* CameraViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8CA6F5071BC0582B00E8F844 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA6F5061BC0582B00E8F844 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		8CA6F4F91BBFF62A00E8F844 /* WishMaster_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishMaster_IOSUITests.swift; sourceTree = "<group>"; };
 		8CA6F4FB1BBFF62A00E8F844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CA6F5041BC00C8500E8F844 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		8CA6F5061BC0582B00E8F844 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA6F5071BC0582B00E8F844 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		8CA6F4D51BBFF62A00E8F844 = {
 			isa = PBXGroup;
 			children = (
+				8CA6F5061BC0582B00E8F844 /* CoreLocation.framework */,
 				8CA6F4E01BBFF62A00E8F844 /* WishMaster.IOS */,
 				8CA6F4F81BBFF62A00E8F844 /* WishMaster.IOSUITests */,
 				8CA6F4DF1BBFF62A00E8F844 /* Products */,
