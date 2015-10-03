@@ -194,7 +194,12 @@
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WishMaster.Service\WishMaster.Service.csproj">
+      <Project>{e2460e00-3734-45ee-a708-baa465e0b507}</Project>
+      <Name>WishMaster.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

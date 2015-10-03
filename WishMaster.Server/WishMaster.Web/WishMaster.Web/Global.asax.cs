@@ -16,6 +16,10 @@ namespace WishMaster.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var migratorConfig = new WishMaster.Service.Migrations.Configuration();
+            var dbMigrator = new System.Data.Entity.Migrations.DbMigrator(migratorConfig);
+            dbMigrator.Update();
         }
     }
 }
