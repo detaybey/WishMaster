@@ -11,9 +11,9 @@
         <div class="ui grid">
             <div class="computer tablet only row">
                 <div class="ui fixed menu navbar page grid">
-                    <a href="#" ><img src="~/Content/app_logo.png" style="max-height:52px" /></a>
+                    <a href="@Url.Action("Index","Home")"><img src="~/Content/app_logo.png" style="max-height:52px" /></a>
 
-                    <div class="ui action input" style="padding-top:10px;width:60%;margin-bottom:10px">
+                    <div class="ui action input" style="padding-top:10px;width:50%;margin-bottom:10px">
                         <input type="text" placeholder="Search...">
 
                         <select class="ui compact selection dropdown">
@@ -81,49 +81,50 @@
                 </div>
             </div>*@
         </div>
-        <div class="ui page  grid main">
-            <div class="row">
-                <div class="column padding-reset">
-                    @RenderBody()
-                </div>
-            </div>
+	<div class="ui page grid main">
+		@RenderBody()
+	</div>
+			@*<div class="ui page grid main">
+				 <div class="row">
+					  <div class="column padding-reset">
+					  </div>
+				 </div>
+			</div>*@
+		<div class="ui inverted vertical footer segment" style="position:relative;bottom:0;left:0;right:0;margin-top:50px;">
+			<div class="ui container">
+				<div class="ui stackable inverted divided equal height stackable grid">
+					<div class="three wide column">
+						<h4 class="ui inverted header">Team Genei</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">Levent Kavukcu</a>
+							<a href="#" class="item">Umut Çelenli</a>
+							<a href="#" class="item">Kaan Tirali</a>
+							<a href="#" class="item">Emre & Meltem Çelenli</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h4 class="ui inverted header">API List</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">Fraud Scoring for Merchants</a>
+							<a href="#" class="item">Lost-Stolen Account List</a>
+							<a href="#" class="item">Simplify Commerce</a>
+							<a href="#" class="item">MoneySend</a>
+						</div>
+					</div>
+					<div class="ten wide column">
+						<div style="float:right">
+							<img src="~/Content/Mastercard_developer_Zone.png" class="ui image small" />
+							Masters Of Code İstanbul
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        </div>
-        <div class="ui inverted vertical footer segment"  style="position:relative;bottom:0;left:0;right:0;margin-top:50px;">
-            <div class="ui container">
-                <div class="ui stackable inverted divided equal height stackable grid">
-                    <div class="three wide column">
-                        <h4 class="ui inverted header">Team Genei</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Levent Kavukcu</a>
-                            <a href="#" class="item">Umut Çelenli</a>
-                            <a href="#" class="item">Kaan Tirali</a>
-                            <a href="#" class="item">Emre & Meltem Çelenli</a>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted header">API List</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Fraud Scoring for Merchants</a>
-                            <a href="#" class="item">Lost-Stolen Account List</a>
-                            <a href="#" class="item">Simplify Commerce</a>
-                            <a href="#" class="item">MoneySend</a>
-                        </div>
-                    </div>
-                    <div class="ten wide column">
-                        <div style="float:right">
-                            <img src="~/Content/Mastercard_developer_Zone.png" class="ui image small" />
-                            Masters Of Code İstanbul
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/JSlibraries")
-        @Scripts.Render("~/bundles/js")
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/JSlibraries")
+		@Scripts.Render("~/bundles/js")
 
-        @RenderSection("scripts", required: false)
+		@RenderSection("scripts", required: false)
 </body>
 </html>

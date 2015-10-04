@@ -20,10 +20,14 @@ namespace WishMaster.Web.Controllers
         public ProductService ProductService { get; set; }
         public CardService CardService { get; set; }
 
+        public BaseController()
+        {
+            Db = new WishMasterDataContext();
+        }
+
         protected override void Initialize(RequestContext requestContext)
         {
             // Set Services 
-            Db = new WishMasterDataContext();
             UserService = new UserService(Db);
             CardService = new CardService(Db, UserService);
             ProductService = new ProductService(Db, CardService);
@@ -33,5 +37,14 @@ namespace WishMaster.Web.Controllers
             base.Initialize(requestContext);
         }
 
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
