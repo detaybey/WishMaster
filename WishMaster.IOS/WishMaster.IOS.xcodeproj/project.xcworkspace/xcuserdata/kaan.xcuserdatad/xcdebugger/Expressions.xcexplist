@@ -6,6 +6,14 @@
          contextName = "CameraViewController.sendProductClick(AnyObject) -&gt; ():CameraViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "SelectionViewController.prepareForSegue(UIStoryboardSegue, sender : AnyObject?) -&gt; ():SelectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CameraViewController.(keyboardWillShow(CameraViewController) -&gt; (NSNotification) -&gt; ()).(closure #1):CameraViewController.swift">
          <PersistentStrings>
             <PersistentString
