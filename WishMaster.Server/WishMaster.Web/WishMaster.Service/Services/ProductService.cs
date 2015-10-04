@@ -64,7 +64,7 @@ namespace WishMaster.Service.Services
         /// <param name="buyer">Buyer user</param>
         /// <param name="productId">productid</param>
         /// <returns>New created order record</returns>
-        public Order Buy(User buyer, long productId)
+        public Order Buy(User buyer, long productId, int quantity)
         {
             var product = Db.Products.Find(productId);
 
@@ -82,6 +82,7 @@ namespace WishMaster.Service.Services
                 ProductId = productId,
                 SellerId = product.SellerId,
                 State = OrderState.Paid,
+                Quantity = quantity
             };
             Db.Orders.Add(order);
             Db.SaveChanges();
@@ -94,7 +95,7 @@ namespace WishMaster.Service.Services
                 RequestId = 0,
                 TransactionReference = 0,
                 Hash = Guid.NewGuid(),
-                UsdAmount = product.UsdPrice,
+                UsdAmount = product.UsdPrice * order.Quantity,
                 Type = TransactionType.Charge_Buyer,
                 AuthCode = payment.AuthCode,
                 PaymentId = payment.Id,

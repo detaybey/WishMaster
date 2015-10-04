@@ -2,6 +2,10 @@
 @{
 	 ViewBag.Title = "ProductDetail";
 	 Layout = "~/Views/Shared/_Layout.cshtml";
+	 var random = new Random();
+	 var likeCount = random.Next(1, 499);
+	 var salesCount = Model.Seller.Orders.Count() + 100;
+	 var buyCount = Model.Seller.Products.Count() + 10;
 }
 
 <div class="ui large breadcrumb" style="margin-bottom:10px">
@@ -16,13 +20,13 @@
 			<div class="ui red segment">
 				<div class="ui huge header">@Model.Title</div>
 				<img class="ui fluid image" src="~/Content/products/@(Model.Id).jpg">
-				<div class="ui bottom attached label">Product Photo Taken @@ New York City</div>
+				<div class="ui bottom attached label">Product Photo Taken at @Model.CountryCode</div>
 
 			</div>
 			<div class="ui basic segment" style="padding:0;">
 				<div class="ui left labeled button" tabindex="0" style="margin-right:20px">
 					<a class="ui basic right pointing label">
-						2,048
+						@likeCount
 					</a>
 					<div class="ui button">
 						<i class="heart icon"></i> Like
@@ -78,7 +82,7 @@
 				<div class="ui basic segment" style="padding:0">
 					@using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
 					{
-						<input type="hidden" name="ProductId" value="@Model.Id" />
+						<input type="hidden" name="ProductId" value="@Model.Id" />	
 						<table class="ui orange table">
 							<thead>
 								<tr>
@@ -135,9 +139,9 @@
 									<div class="item" style="text-align:center">
 
 										<img class="ui avatar tiny image" src="~/Content/avatar/@(Model.SellerId).jpg">
-										<div class="content">
+										@*<div class="content">
 											<div class="description">Last photo taken at <a><b>New York City</b></a> 3 days ago.</div>
-										</div>
+										</div>*@
 
 									</div>
 								</div>
@@ -156,7 +160,7 @@
 							<td>
 								<div class="ui label fluid">
 									<i class="Add to cart orange icon"></i>
-									100
+									@salesCount
 									<a class="detail"> Successfull Sales</a>
 								</div>
 							</td>
@@ -165,7 +169,7 @@
 							<td>
 								<div class="ui label fluid">
 									<i class="heart red icon"></i>
-									10
+									@buyCount
 									<a class="detail"> Successfull Buy</a>
 								</div>
 							</td>

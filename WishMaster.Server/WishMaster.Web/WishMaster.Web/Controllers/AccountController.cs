@@ -13,7 +13,7 @@ namespace WishMaster.Web.Controllers
         [HttpGet]
         public ActionResult Orders()
         {
-            var orders = Db.Orders.Include("Seller").Include("Product").AsQueryable();
+            var orders = Db.Orders.Include("Seller").Include("Product").Include("Transactions").AsQueryable();
             var list = orders.Where(x => x.CustomerId == MyUser.Id).ToList();
             return View(list);
         }

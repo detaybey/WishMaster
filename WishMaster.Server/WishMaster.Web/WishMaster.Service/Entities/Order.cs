@@ -40,6 +40,7 @@ namespace WishMaster.Service.Entities
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
 
+        public int Quantity { get; set; }
         public OrderState State { get; set; }
 
         public ICollection<Transaction> Transactions { get; set; }

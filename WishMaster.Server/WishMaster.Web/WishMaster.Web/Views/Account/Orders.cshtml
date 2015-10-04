@@ -12,6 +12,7 @@
 				<th>Date</th>
 				<th>Seller</th>
 				<th>Product</th>
+				<th>Quantity</th>
 				<th>Days to ship</th>
 				<th>Status</th>
 			</tr>
@@ -20,14 +21,25 @@
 		<tbody>
 			@foreach (var item in Model)
 			{
-			<tr>
-				<td>@item.Id</td>
-				<td>@item.Created.ToLongDateString()</td>
-				<td><a href="@Url.Action("Profile", "User", new { id = item.SellerId })">@item.Seller.Nick</a></td>
-				<td>@item.Product.Title</td>
-				<td>@item.Product.DaysLeftStr(item.Product.ShipDaysLeft)</td>
-				<td>@item.PrintOrderState()</td>
-			</tr>
+				<tr>
+					<td>@item.Id</td>
+					<td>@item.Created.ToLongDateString()</td>
+					<td><a href="@Url.Action("Profile", "User", new { id = item.SellerId })">@item.Seller.Nick</a></td>
+					<td>@item.Product.Title</td>
+					<td>@item.Product.Quantity</td>
+					<td>@item.Product.DaysLeftStr(item.Product.ShipDaysLeft)</td>
+					<td>@item.PrintOrderState()</td>
+				</tr>
+				foreach (var transaction in item.Transactions.Where(x=>x.Type == TransactionType.Charge_Buyer))
+				{
+					<tr class="active">
+						<td colspan="2"></td>
+						<td colspan="2" style="text-align:center;">@(transaction.UsdAmount * item.Quantity) USD</td>
+						<td colspan="3"><b>PaymentId : </b>@transaction.PaymentId
+						<b>AuthCode : </b>@transaction.AuthCode</td>
+		 
+					</tr>
+				}
 			}
 		</tbody>
 

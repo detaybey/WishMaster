@@ -38,10 +38,14 @@ namespace WishMaster.Web.Controllers
 
         [HttpPost]
         public ActionResult Checkout(CheckoutModel model)
-        {          
+        {
+            if (model.Quantity == 0)
+            {
+                return RedirectToAction("ProductDetail", "Home", new { @id = model.ProductId });
+            }
             if (model.Confirm)
             {
-                var order = ProductService.Buy(MyUser, model.ProductId);
+                var order = ProductService.Buy(MyUser, model.ProductId, model.Quantity);
                 if (order != null)
                 {
                     return RedirectToAction("ThankYou", "Home", new { success = true });
