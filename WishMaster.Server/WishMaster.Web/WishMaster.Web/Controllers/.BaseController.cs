@@ -32,7 +32,8 @@ namespace WishMaster.Web.Controllers
             CardService = new CardService(Db, UserService);
             ProductService = new ProductService(Db, CardService);
 
-            MyUser = UserService.GetUserByNick("system");
+            // demo buyer account
+            MyUser = UserService.GetUserByNick("emre");
 
             base.Initialize(requestContext);
         }
