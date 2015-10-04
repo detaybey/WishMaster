@@ -3,7 +3,7 @@
 	 var flagfrom = Model.CountryCode.ToLower();
 	 var flagto = Model.DestinationCountry.ToLower();
 
-	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry, Model.ShipDaysLeft);
+	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry.Replace("United States","USA"), Model.ShipDaysLeft);
 
 }
 <table class="ui red table">
