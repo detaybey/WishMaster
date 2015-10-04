@@ -13,6 +13,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var usernameBox: UITextField!
     @IBOutlet weak var passwordBox: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.text = "" //celan error label
+        usernameBox.leftViewMode = UITextFieldViewMode.Always
+        usernameBox.leftView = UIImageView(image: UIImage(named: "user"))
+
+        passwordBox.leftViewMode = UITextFieldViewMode.Always
+        passwordBox.leftView = UIImageView(image: UIImage(named: "pass"))
+        
+        loginButton.layer.cornerRadius = 5
         // Do any additional setup after loading the view, typically from a nib.
     }
 

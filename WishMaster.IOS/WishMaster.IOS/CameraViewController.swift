@@ -250,41 +250,106 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"lng\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(lastLocation.coordinate.longitude).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(lastLocation.coordinate.longitude))
+            
+            if (availableDays.text == "")
+            {
+            
+                showAlert("Please input how many days the product can be ordered.")
+                return
+            
+            }
             //availableDays
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"daystopurchase\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(availableDays?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(availableDays?.text ?? ""))
+            
+            if (pTitle.text == "")
+            {
+                
+                showAlert("Please give a title to the product.")
+                return
+                
+            }
             //pTitle
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"title\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(pTitle?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(pTitle?.text ?? ""))
+            
+            if (price.text == "")
+            {
+                
+                showAlert("Please indicate the price for the product.")
+                return
+                
+            }
             //price
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"price\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(price?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(price?.text ?? ""))
+            
+            if (quantity.text == "")
+            {
+                
+                showAlert("Please indicate the quantity.")
+                return
+                
+            }
+            
             //quantity
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"quantity\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(quantity?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(quantity?.text ?? ""))
+            
+            if (pDescription.text == "")
+            {
+                
+                showAlert("Please write a description for the product.")
+                return
+                
+            }
             //description
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"description\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(pDescription?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(pDescription?.text ?? ""))
+            
+            if (country.text == "")
+            {
+                
+                showAlert("Please choose a destination Country.")
+                return
+                
+            }
             //country
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"country\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(country?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(country?.text ?? ""))
+            
+            if (daysToShip.text == "")
+            {
+                
+                showAlert("Please indicate when you can ship the product.")
+                return
+                
+            }
             //daystoship
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"daystoship\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(String(daysToShip?.text ?? "").dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
             print(String(daysToShip?.text ?? ""))
+            
+            if (selectedCategoryId == 0)
+            {
+                
+                showAlert("Please select a category for the product.")
+                return
+                
+            }
             //categoryId
             body.appendData(NSString(format: "\r\n--%@\r\n",boundary).dataUsingEncoding(NSUTF8StringEncoding)!)
             body.appendData(NSString(format:"Content-Disposition: form-data; name=\"categoryid\"\r\n\r\n").dataUsingEncoding(NSUTF8StringEncoding)!)
@@ -345,5 +410,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         productPhoto.image = info[UIImagePickerControllerOriginalImage] as? UIImage
 
+    }
+    
+    func showAlert(msg: String)
+    {
+        let alertController = UIAlertController(title: "Info", message:
+            msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
