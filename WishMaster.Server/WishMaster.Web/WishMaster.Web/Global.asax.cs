@@ -29,8 +29,8 @@ namespace WishMaster.Web
                 userService.Init();
                 var cardService = new CardService(db, userService);
                 cardService.Init();
-                var scoreService = new ScoreService(db, userService);
-                scoreService.Init();
+                //var scoreService = new ScoreService(db, userService);
+                //scoreService.Init();
             }
         }
     }
