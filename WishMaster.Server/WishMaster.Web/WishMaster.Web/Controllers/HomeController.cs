@@ -54,6 +54,9 @@ namespace WishMaster.Web.Controllers
             }
             return View(model);
         }
-
+        public ActionResult Thankyou()
+        { 
+            return View();
+        }
     }
 }
