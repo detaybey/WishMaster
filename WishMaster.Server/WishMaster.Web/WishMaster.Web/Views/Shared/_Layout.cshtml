@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+	 var myUser = ViewBag.User as User;
+}
+<!DOCTYPE html>
 <html lang="en" data-ng-app="app">
 <head>
 	<meta charset="utf-8" />
@@ -35,7 +38,7 @@
 
 				<div class="right menu">
 					<a class="ui dropdown item">
-						<img class="ui avatar image" src="~/Content/avatar/12.jpg">
+						<img class="ui avatar image" src="~/Content/avatar/@(myUser.Id).jpg">
 						Account
 						<i class="dropdown icon"></i>
 						<div class="menu">
@@ -90,5 +93,10 @@
 	@Scripts.Render("~/bundles/js")
 
 	@RenderSection("scripts", required: false)
+	<script>
+		$(document).ready(function () {
+			$('.ui.dropdown').dropdown();
+		});
+	</script>
 </body>
 </html>
