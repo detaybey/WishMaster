@@ -1,6 +1,7 @@
 ﻿@model List<User>
 @{
-	 var j = 1;
+    var j = 1;
+    var color = "red,orange,yellow,olive".Split(','); 
 }
 <table class="ui orange table">
 	<thead>
@@ -13,11 +14,37 @@
 		{
 			<tr>
 				<td>@j</td>
-				<td>
+				<td style="padding:0px">
 					<img class="ui avatar image" src="~/Content/avatar/@(user.Id).jpg">
 				</td>
-				<td>@user.Nick</td>
-				<td>@user.Scores.Sum(x=>x.Value) points</td>
+                @{ 
+                    var nick = user.Nick;
+
+                    if (nick.Length > 8)
+                    {
+                        nick = nick.Substring(0, 8) + "...";
+                    }
+                }
+				<td style="padding:0px">@nick</td>
+                @{ 
+                    var targetColor = color[0];
+                    if(j>1 && j < 4)
+                    {
+                        targetColor=color[1];
+                    }else if (j > 3 && j < 6)
+                    {
+                        targetColor = color[2];
+                    }
+                    else if (j > 5 && j < 11)
+                    {
+                        targetColor = color[3];
+                    }
+                    else
+                    {
+                        targetColor = color[0];
+                    }
+                }
+				<td><a class="ui @(targetColor) circular label">@user.Scores.Sum(x => x.Value) point</a></td>
 			</tr>
 			{ 
 				 j += 1;
