@@ -26,8 +26,8 @@ namespace WishMaster.Service.Migrations
               new Category { Name = "Sports" },
               new Category { Name = "Books" },
               new Category { Name = "Music & Games" },
-              new Category { Name = "Healty & Beauty" },
-              new Category { Name = "Other" }
+              new Category { Name = "Health & Beauty" },
+              new Category { Name = "Everything Else" }
             );
 
             //context.Users.AddOrUpdate(

@@ -26,6 +26,35 @@ namespace WishMaster.Service.Services
             UserService = userService;
         }
 
+
+        /// <summary>
+        /// Create test-cards for test users
+        /// </summary>
+        public void Init()
+        {
+            foreach (var user in Db.Users)
+            {
+                if (user.Cards.Any() == false)
+                {
+                    var card = new Entities.Card
+                    {
+                        ExpMonth = "11",
+                        ExpYear = "2018",
+                        OwnerId = user.Id,
+                        Number = "518468043" + Sandbox.RandomLUHN(),
+                        AcceptorName = "Bank of Narnia",
+                        AcceptorCity = "Saint Louis",
+                        AcceptorCountry = "USA",
+                        AcceptorPostalCode = "63101",
+                        AcceptorState = "MO",
+                        CCV = "343"
+                    };
+                    Db.Cards.Add(card);
+                    Db.SaveChanges();
+                }
+            }
+        }
+
         /// <summary>
         /// Adds a new credit card information
         /// </summary>
@@ -101,7 +130,7 @@ namespace WishMaster.Service.Services
             request.TransactionDetail.CustomerIdentifier = 1996;
             request.TransactionDetail.MerchantIdentifier = 123;
             request.TransactionDetail.AccountNumber = Convert.ToInt64(card.Number);
-            request.TransactionDetail.AccountPrefix = Convert.ToInt32(card.Number.Substring(0,6));
+            request.TransactionDetail.AccountPrefix = Convert.ToInt32(card.Number.Substring(0, 6));
             request.TransactionDetail.AccountSuffix = Convert.ToInt16(card.Number.Substring(12, 4)); ;
             request.TransactionDetail.TransactionDate = 1231;
             request.TransactionDetail.TransactionTime = "035959";
@@ -110,7 +139,7 @@ namespace WishMaster.Service.Services
 
             request.TransactionDetail.TransactionAmount = amount;
             ScoreLookup scoreLookup = service.getScoreLookup(request);
-            if(scoreLookup.ScoreResponse.MatchIndicator != (short)MatchIndicatorStatus.NO_MATCH_FOUND)
+            if (scoreLookup.ScoreResponse.MatchIndicator != (short)MatchIndicatorStatus.NO_MATCH_FOUND)
             {
                 var log = new FraudLog()
                 {
@@ -215,7 +244,6 @@ namespace WishMaster.Service.Services
             Db.Transactions.Add(transaction);
             Db.SaveChanges();
         }
-
 
         /// <summary>
         /// Charge the buyer of an order

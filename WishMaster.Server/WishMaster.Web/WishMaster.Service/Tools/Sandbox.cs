@@ -42,5 +42,11 @@ namespace WishMaster.Service.Tools
             int p = random.Next(int.MaxValue);
             return "1800" + p.ToString("D6");
         }
+
+        public static string RandomLUHN()
+        {
+            int p = random.Next(int.MaxValue);
+            return p.ToString("D7").Substring(0,7);
+        }
     }
 }

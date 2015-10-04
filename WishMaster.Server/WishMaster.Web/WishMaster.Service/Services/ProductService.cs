@@ -47,7 +47,9 @@ namespace WishMaster.Service.Services
                 Quantity = model.quantity,
                 SellerId = user.Id,
                 Title = model.title,
-                UsdPrice = model.price
+                UsdPrice = model.price,
+                CountryCode = "TR",
+                DestinationCountry = model.country
             };
             Db.Products.Add(product);
             Db.SaveChanges();

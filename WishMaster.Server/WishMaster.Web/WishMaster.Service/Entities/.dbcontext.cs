@@ -25,6 +25,7 @@ namespace WishMaster.Service.Entities
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
