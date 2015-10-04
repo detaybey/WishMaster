@@ -97,7 +97,10 @@ namespace WishMaster.Service.Services
         {
             var service = new LostStolenService(Security.GetConsumerKey(), Security.GetPrivateKey(), Environments.Environment.SANDBOX);
             var accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = card.Number;
+            accountInquiry.AccountNumber = "343434343434343";
+            // card.Number;
+            // actual card number gets an exception (bad request 400);
+
             Account account = service.GetLostStolen(accountInquiry);
 
             if (!string.IsNullOrEmpty(account.ReasonCode))
@@ -125,21 +128,30 @@ namespace WishMaster.Service.Services
         /// <returns>True if card has a problem</returns>
         public bool CheckFraud(Entities.Card card, long amount)
         {
+            int FRAUD_TRESHOLD = 500;
+
             var service = new FraudScoringService(Environments.Environment.SANDBOX, Security.GetConsumerKey(), Security.GetPrivateKey());
             var request = new ScoreLookupRequest();
             request.TransactionDetail.CustomerIdentifier = 1996;
             request.TransactionDetail.MerchantIdentifier = 123;
-            request.TransactionDetail.AccountNumber = Convert.ToInt64(card.Number);
-            request.TransactionDetail.AccountPrefix = Convert.ToInt32(card.Number.Substring(0, 6));
-            request.TransactionDetail.AccountSuffix = Convert.ToInt16(card.Number.Substring(12, 4)); ;
             request.TransactionDetail.TransactionDate = 1231;
             request.TransactionDetail.TransactionTime = "035959";
             request.TransactionDetail.BankNetReferenceNumber = "abcABC123";
             request.TransactionDetail.Stan = 123456;
 
+            //request.TransactionDetail.AccountNumber = 5555555555555555555;
+            //request.TransactionDetail.AccountPrefix = 555555;
+            //request.TransactionDetail.AccountSuffix = 5555;
+            //request.TransactionDetail.TransactionAmount = 1;
+            request.TransactionDetail.AccountNumber = Convert.ToInt64(card.Number);
+            request.TransactionDetail.AccountPrefix = Convert.ToInt32(card.Number.Substring(0, 6));
+            request.TransactionDetail.AccountSuffix = Convert.ToInt16(card.Number.Substring(12, 4));
             request.TransactionDetail.TransactionAmount = amount;
+
+            //user card data return error;
+
             ScoreLookup scoreLookup = service.getScoreLookup(request);
-            if (scoreLookup.ScoreResponse.MatchIndicator != (short)MatchIndicatorStatus.NO_MATCH_FOUND)
+            if (scoreLookup.ScoreResponse.FraudScore> FRAUD_TRESHOLD)
             {
                 var log = new FraudLog()
                 {
@@ -251,14 +263,14 @@ namespace WishMaster.Service.Services
         /// <param name="usdAmout"></param>
         /// <param name="order"></param>
         /// <returns>True if charge occured successfully</returns>
-        public Payment ChargeBuyer(long usdAmount, User buyer)
+        public Payment ChargeBuyer(User buyer, Product product)
         {
             var buyerCard = buyer.Cards.First();
             if (CheckLostStolen(buyerCard))
             {
                 return null;
             }
-            if (CheckFraud(buyerCard, usdAmount))
+            if (CheckFraud(buyerCard, (long)product.UsdPrice))
             {
                 return null;
             }
@@ -267,20 +279,25 @@ namespace WishMaster.Service.Services
             PaymentsApi.PrivateApiKey = Security.GetSCPrivateKey();
             PaymentsApi api = new PaymentsApi();
             Payment payment = new Payment();
-            payment.Amount = usdAmount;
+            payment.Amount = (long)product.UsdPrice;
+
 
             var card = new SimplifyCommerce.Payments.Card();
-            card.Cvc = buyerCard.CCV;
-            card.ExpMonth = Convert.ToInt16(buyerCard.ExpMonth);
-            card.ExpYear = Convert.ToInt16(buyerCard.ExpYear.Substring(2, 2));
-            card.Number = buyerCard.Number;
+            card.Cvc = "123";
+            card.ExpMonth = 11;
+            card.ExpYear = 23;
+            card.Number = "5555555555554444";
+
+            //var card = new SimplifyCommerce.Payments.Card();
+            //card.Cvc = buyerCard.CCV;
+            //card.ExpMonth = Convert.ToInt16(buyerCard.ExpMonth);
+            //card.ExpYear = Convert.ToInt16(buyerCard.ExpYear.Substring(2, 2));
+            //card.Number = buyerCard.Number;
 
             payment.Card = card;
             payment.Currency = "USD";
             payment.Description = "Wishmaster Order";
-            payment = (Payment)api.Create(payment);
-
-            return payment;
+            return (Payment)api.Create(payment);
         }
     }
 

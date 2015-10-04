@@ -45,5 +45,10 @@ namespace WishMaster.Service.Entities
         public ICollection<Transaction> Transactions { get; set; }
         public ICollection<FraudLog> FraudLogs { get; set; }
         public ICollection<StolenLog> StolenLogs { get; set; }
+
+        public string FormattedDisplay()
+        {
+            return String.Format("{0:0000-0000-0000-0000}", Convert.ToInt64(this.Number));
+        }
     }
 }

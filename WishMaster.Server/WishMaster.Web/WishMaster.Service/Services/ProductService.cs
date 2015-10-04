@@ -68,7 +68,7 @@ namespace WishMaster.Service.Services
         {
             var product = Db.Products.Find(productId);
 
-            var payment = CardService.ChargeBuyer((long)product.UsdPrice, buyer);
+            var payment = CardService.ChargeBuyer(buyer, product);
             var approved = payment.PaymentStatus == "APPROVED";
             if (!approved)
             {

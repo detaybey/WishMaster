@@ -28,17 +28,31 @@ namespace WishMaster.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Checkout()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult ProductDetail(long id)
         {
             var productQuery = Db.Products.Include(p => p.Category).Include(p => p.Seller).Include(x => x.Seller.Cards).AsQueryable();
             var product = productQuery.FirstOrDefault(x=>x.Id == id);
             return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Checkout(CheckoutModel model)
+        {          
+            if (model.Confirm)
+            {
+                var order = ProductService.Buy(MyUser, model.ProductId);
+                if (order != null)
+                {
+                    return RedirectToAction("Index", "Home", new { success = true });
+                }
+            }
+            else
+            {
+                model.Product = Db.Products.Find(model.ProductId);
+                model.Seller = Db.Users.Find(model.Product.SellerId);
+            }
+            return View(model);
         }
 
     }
