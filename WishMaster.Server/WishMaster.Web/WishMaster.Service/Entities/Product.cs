@@ -45,6 +45,9 @@ namespace WishMaster.Service.Entities
         [StringLength(2)]
         public string CountryCode { get; set; }
 
+        [StringLength(20)]
+        public string DestinationCountry { get; set; }
+
         public virtual ICollection<Order> Orders { get; set; }
 
 

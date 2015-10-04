@@ -26,8 +26,11 @@ namespace WishMaster.Web
             using(var db = new WishMasterDataContext())
             {
                 var userService = new UserService(db);
+                userService.Init();
                 var cardService = new CardService(db, userService);
                 cardService.Init();
+                var scoreService = new ScoreService(db, userService);
+                scoreService.Init();
             }
         }
     }

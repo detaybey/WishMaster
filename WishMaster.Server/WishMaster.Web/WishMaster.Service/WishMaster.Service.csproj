@@ -132,11 +132,16 @@
     <Compile Include="Migrations\201510032322175_CountryCodeAddedToProduct.Designer.cs">
       <DependentUpon>201510032322175_CountryCodeAddedToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510032351309_DestinationCountryAddedToProduct.cs" />
+    <Compile Include="Migrations\201510032351309_DestinationCountryAddedToProduct.Designer.cs">
+      <DependentUpon>201510032351309_DestinationCountryAddedToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\.BaseService.cs" />
     <Compile Include="Services\CardService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ScoreService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
@@ -188,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510032322175_CountryCodeAddedToProduct.resx">
       <DependentUpon>201510032322175_CountryCodeAddedToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510032351309_DestinationCountryAddedToProduct.resx">
+      <DependentUpon>201510032351309_DestinationCountryAddedToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
