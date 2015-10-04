@@ -34,6 +34,7 @@ namespace WishMaster.Web.Controllers
 
             // demo buyer account
             MyUser = UserService.GetUserByNick("emre");
+            ViewBag.User = MyUser;
 
             base.Initialize(requestContext);
         }
