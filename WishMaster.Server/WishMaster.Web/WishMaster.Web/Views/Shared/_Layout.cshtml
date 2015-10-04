@@ -1,129 +1,102 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+	 var myUser = ViewBag.User as User;
+}
+<!DOCTYPE html>
 <html lang="en" data-ng-app="app">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Wish Master</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title - Wish Master</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-controller="AppCtrl">
-        <div class="ui grid">
-            <div class="computer tablet only row">
-                <div class="ui fixed menu navbar page grid">
-                    <a href="#" ><img src="~/Content/app_logo.png" style="max-height:52px" /></a>
+	<div class="ui grid">
+		<div class="computer tablet only row">
+			<div class="ui fixed menu navbar page grid">
+				<a href="@Url.Action("Index","Home")"><img src="~/Content/app_logo.png" style="max-height:52px" /></a>
 
-                    <div class="ui action input" style="padding-top:10px;width:60%;margin-bottom:10px">
-                        <input type="text" placeholder="Search...">
+				<div class="ui action input" style="padding-top:10px;width:50%;margin-bottom:10px">
+					<input type="text" placeholder="Search...">
 
-                        <select class="ui compact selection dropdown">
-                            <option selected="selected" value="0">All Categories</option>
-                            <option value="550">Fashion</option>
-                            <option value="2984">Electronics</option>
-                            <option value="267">Home & Garden</option>
-                            <option value="12576">Toys</option>
-                            <option value="12576">Kids & Baby</option>
-                            <option value="12576">Sports</option>
-                            <option value="12576">Music</option>
-                            <option value="12576">Games</option>
-                            <option value="12576">Movies</option>
-                            <option value="12576">Healty & Beauty</option>
-                            <option value="12576">Books</option>
-                        </select>
-                        <div type="submit" class="ui button">Search</div>
-                    </div>
+					<select class="ui compact selection dropdown">
+						<option selected="selected" value="0">All Categories</option>
+						<option value="550">Fashion</option>
+						<option value="2984">Electronics</option>
+						<option value="267">Home & Garden</option>
+						<option value="12576">Toys</option>
+						<option value="12576">Kids & Baby</option>
+						<option value="12576">Sports</option>
+						<option value="12576">Music</option>
+						<option value="12576">Games</option>
+						<option value="12576">Movies</option>
+						<option value="12576">Healty & Beauty</option>
+						<option value="12576">Books</option>
+					</select>
+					<div type="submit" class="ui button">Search</div>
+				</div>
 
-                    <div class="right menu">
-                        <a class="ui dropdown item">
-                            <img class="ui avatar image" src="~/Content/avatar/12.jpg">
-                            Account
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <div class="item">Payment Information</div>
-                                <div class="ui divider"></div>
-                                <div class="item">Achivements</div>
-                                <div class="item">Logout</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            @*<div class="mobile only row">
-                <div class="ui fixed inverted navbar menu">
-                    <a href="" style="margin-top: 10px;">SHOP @@<br /><div style="font-size:xx-small">around the world</div></a>
+				<div class="right menu">
+					<a class="ui dropdown item">
+						<img class="ui avatar image" src="~/Content/avatar/@(myUser.Id).jpg">
+						Account
+						<i class="dropdown icon"></i>
+						<div class="menu">
+							<div class="item">Payment Information</div>
+							<div class="ui divider"></div>
+							<div class="item">Achivements</div>
+							<div class="item">Logout</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ui page grid main">
+			<div class="column padding-reset">
+				@RenderBody()
+		</div>
+	</div>
+	<div class="ui inverted vertical footer segment" style="position:relative;bottom:0;left:0;right:0;margin-top:50px;">
+		<div class="ui container">
+			<div class="ui stackable inverted divided equal height stackable grid">
+				<div class="three wide column">
+					<h4 class="ui inverted header">Team Genei</h4>
+					<div class="ui inverted link list">
+						<a href="#" class="item">Levent Kavukcu</a>
+						<a href="#" class="item">Umut Çelenli</a>
+						<a href="#" class="item">Kaan Tirali</a>
+						<a href="#" class="item">Emre & Meltem Çelenli</a>
+					</div>
+				</div>
+				<div class="three wide column">
+					<h4 class="ui inverted header">API List</h4>
+					<div class="ui inverted link list">
+						<a href="#" class="item">Fraud Scoring for Merchants</a>
+						<a href="#" class="item">Lost-Stolen Account List</a>
+						<a href="#" class="item">Simplify Commerce</a>
+						<a href="#" class="item">MoneySend</a>
+					</div>
+				</div>
+				<div class="ten wide column">
+					<div style="float:right">
+						<img src="~/Content/Mastercard_developer_Zone.png" class="ui image small" />
+						Masters Of Code İstanbul
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                    <div class="right menu open">
-                        <a href="" class="menu item">
-                            <i class="reorder icon"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="ui vertical navbar menu">
-                    <a href="" class="active item">Home</a>
-                    <a href="" class="item">About</a>
-                    <a href="" class="item">Contact</a>
-                    <div class="ui item">
-                        <div class="text">Dropdown</div>
-                        <div class="menu">
-                            <a class="item">Action</a>
-                            <a class="item">Another action</a>
-                            <a class="item">Something else here</a>
-                            <a class="ui aider"></a>
-                            <a class="item">Seperated link</a>
-                            <a class="item">One more seperated link</a>
-                        </div>
-                    </div>
-                    <div class="menu">
-                        <a href="" class="active item">Default</a>
-                        <a href="" class="item">Static top</a>
-                        <a href="" class="item">Fixed top</a>
-                    </div>
-                </div>
-            </div>*@
-        </div>
-        <div class="ui page  grid main">
-            <div class="row">
-                <div class="column padding-reset">
-                    @RenderBody()
-                </div>
-            </div>
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/JSlibraries")
+	@Scripts.Render("~/bundles/js")
 
-        </div>
-        <div class="ui inverted vertical footer segment"  style="position:relative;bottom:0;left:0;right:0;margin-top:50px;">
-            <div class="ui container">
-                <div class="ui stackable inverted divided equal height stackable grid">
-                    <div class="three wide column">
-                        <h4 class="ui inverted header">Team Genei</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Levent Kavukcu</a>
-                            <a href="#" class="item">Umut Çelenli</a>
-                            <a href="#" class="item">Kaan Tirali</a>
-                            <a href="#" class="item">Emre & Meltem Çelenli</a>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted header">API List</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Fraud Scoring for Merchants</a>
-                            <a href="#" class="item">Lost-Stolen Account List</a>
-                            <a href="#" class="item">Simplify Commerce</a>
-                            <a href="#" class="item">MoneySend</a>
-                        </div>
-                    </div>
-                    <div class="ten wide column">
-                        <div style="float:right">
-                            <img src="~/Content/Mastercard_developer_Zone.png" class="ui image small" />
-                            Masters Of Code İstanbul
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-   
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/JSlibraries")
-        @Scripts.Render("~/bundles/js")
-
-        @RenderSection("scripts", required: false)
+	@RenderSection("scripts", required: false)
+	<script>
+		$(document).ready(function () {
+			$('.ui.dropdown').dropdown();
+		});
+	</script>
 </body>
 </html>

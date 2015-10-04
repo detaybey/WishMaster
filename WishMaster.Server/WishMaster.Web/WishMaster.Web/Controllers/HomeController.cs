@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
+using WishMaster.Service.Entities;
 using WishMaster.Service.ViewModels;
 
 namespace WishMaster.Web.Controllers
@@ -11,7 +11,7 @@ namespace WishMaster.Web.Controllers
     {
         public ActionResult Index(long categoryId = 0)
         {
-            var productQuery = Db.Products.AsQueryable();
+            var productQuery = Db.Products.Include(p => p.Category).Include(p => p.Seller).Include(x=>x.Seller.Cards).AsQueryable();
             if (categoryId > 0)
             {
                 productQuery = productQuery.Where(x => x.CategoryId == categoryId);
@@ -32,9 +32,13 @@ namespace WishMaster.Web.Controllers
         {
             return View();
         }
-        public ActionResult ProductDetail()
+
+        [HttpGet]
+        public ActionResult ProductDetail(long id)
         {
-            return View();
+            var productQuery = Db.Products.Include(p => p.Category).Include(p => p.Seller).Include(x => x.Seller.Cards).AsQueryable();
+            var product = productQuery.FirstOrDefault(x=>x.Id == id);
+            return View(product);
         }
 
     }

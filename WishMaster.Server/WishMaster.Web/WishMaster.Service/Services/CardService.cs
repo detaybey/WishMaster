@@ -32,7 +32,7 @@ namespace WishMaster.Service.Services
         /// </summary>
         public void Init()
         {
-            foreach (var user in Db.Users)
+            foreach (var user in Db.Users.ToList())
             {
                 if (user.Cards.Any() == false)
                 {

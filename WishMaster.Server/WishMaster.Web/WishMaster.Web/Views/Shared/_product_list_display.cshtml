@@ -3,8 +3,7 @@
 	 var flagfrom = Model.CountryCode.ToLower();
 	 var flagto = Model.DestinationCountry.ToLower();
 
-	 var days = Math.Ceiling((Model.DueDate - DateTime.Now).TotalDays);
-	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry, days);
+	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry.Replace("United States","USA"), Model.ShipDaysLeft);
 
 }
 <table class="ui red table">

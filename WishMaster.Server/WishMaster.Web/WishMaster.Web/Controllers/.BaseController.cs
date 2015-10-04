@@ -20,18 +20,33 @@ namespace WishMaster.Web.Controllers
         public ProductService ProductService { get; set; }
         public CardService CardService { get; set; }
 
+        public BaseController()
+        {
+            Db = new WishMasterDataContext();
+        }
+
         protected override void Initialize(RequestContext requestContext)
         {
             // Set Services 
-            Db = new WishMasterDataContext();
             UserService = new UserService(Db);
             CardService = new CardService(Db, UserService);
             ProductService = new ProductService(Db, CardService);
 
-            MyUser = UserService.GetUserByNick("system");
+            // demo buyer account
+            MyUser = UserService.GetUserByNick("emre");
+            ViewBag.User = MyUser;
 
             base.Initialize(requestContext);
         }
 
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

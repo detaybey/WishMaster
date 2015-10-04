@@ -37,7 +37,7 @@ namespace WishMaster.Service.Entities
 
         public long SellerId { get; set; }
         [ForeignKey("SellerId")]
-        public User Seller { get; set;  }
+        public User Seller { get; set; }
 
         public float Lat { get; set; }
         public float Lng { get; set; }
@@ -50,6 +50,47 @@ namespace WishMaster.Service.Entities
 
         public virtual ICollection<Order> Orders { get; set; }
 
+        [NotMapped]
+        public double SellDaysLeft
+        {
+            get
+            {
+                var value = Math.Ceiling((DueDate - DateTime.Now).TotalDays);
+                if (value < 0) { value = 0; }
+                return value;
+            }
+        }
 
+        [NotMapped]
+        public double ShipDaysLeft
+        {
+            get
+            {
+                var value = Math.Ceiling((EarliestShipDate - DateTime.Now).TotalDays);
+                if (value < 0) { value = 0; }
+                return value;
+            }
+        }
+
+
+        public string DaysLeftStr(double daysleft)
+        {
+            if (daysleft > 1)
+            {
+                return string.Format("{0} days", daysleft);
+            }
+            else if (daysleft == 1)
+            {
+                return "1 day";
+            }
+            else if (daysleft == 0)
+            {
+                return "Today!";
+            }
+            else
+            {
+                return "Not available anymore";
+            }
+        }
     }
 }
