@@ -136,6 +136,10 @@
     <Compile Include="Migrations\201510032351309_DestinationCountryAddedToProduct.Designer.cs">
       <DependentUpon>201510032351309_DestinationCountryAddedToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510040742471_AddQuantityToOrder.cs" />
+    <Compile Include="Migrations\201510040742471_AddQuantityToOrder.Designer.cs">
+      <DependentUpon>201510040742471_AddQuantityToOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\.BaseService.cs" />
@@ -145,6 +149,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
+    <Compile Include="ViewModels\CheckoutModel.cs" />
     <Compile Include="ViewModels\HomePageModel.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\LoginResult.cs" />
@@ -197,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510032351309_DestinationCountryAddedToProduct.resx">
       <DependentUpon>201510032351309_DestinationCountryAddedToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510040742471_AddQuantityToOrder.resx">
+      <DependentUpon>201510040742471_AddQuantityToOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

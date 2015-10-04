@@ -1,148 +1,156 @@
-﻿
+﻿@model CheckoutModel
 @{
-    ViewBag.Title = "Checkout";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	 ViewBag.Title = "Checkout";
+	 Layout = "~/Views/Shared/_Layout.cshtml";
+	 var myUser = ViewBag.User as User;
+	 var myCard = myUser.Cards.First();
 }
 
 <div class="ui three column divided grid">
-    <div class="stretched row">
-        <div class="five wide column" style="padding:0;">
-            <div class="ui basic segment" style="padding:0">
-                <table class="ui red table">
-                    <thead>
-                        <tr>
-                            <th>Product Info</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="2">
-                                <img class="ui fluid image" src="~/Content/sample/kapak.jpg">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Product Code </td>
-                            <td>XYASAD-ASDASD-2121</td>
-                        </tr>
-                        <tr>
-                            <td>Product Name</td>
-                            <td>Nike Boots</td>
-                        </tr>
-                        <tr>
-                            <td>Seller</td>
-                            <td>Emre</td>
-                        </tr>
-                        <tr>
-                            <td>From</td>
-                            <td>TURKEY</td>
-                        </tr>
-                        <tr>
-                            <td>To</td>
-                            <td>USA</td>
-                        </tr>
-                        <tr>
-                            <td>Shipping Date</td>
-                            <td>10/6/2015</td>
-                        </tr>
-                        <tr>
-                            <td>Quatitiy</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>Price</td>
-                            <td>50 USD</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="eleven wide column">
-            <div class="ui basic segment" style="padding:0">
-                <table class="ui orange table">
-                    <thead>
-                        <tr>
-                            <th>Your Billing & SInfo</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Full Name </td>
-                            <td>Yunus Emre Çelenli</td>
-                        </tr>
-                        <tr>
-                            <td>Credit Card</td>
-                            <td>4402 xxxx xxxx 4721</td>
-                        </tr>
-                        <tr>
-                            <td>Exp. Date</td>
-                            <td>12/19</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>Akdeniz Cd. Emek Apt. No:20</td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>İstanbul</td>
-                        </tr>
-                        <tr>
-                            <td>Zip Code</td>
-                            <td>34225</td>
-                        </tr>
-                        <tr>
-                            <td>State</td>
-                            <td>İstanbul</td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>Turkey</td>
-                        </tr>
+	<div class="stretched row">
+		<div class="five wide column" style="padding:0;">
+			<div class="ui basic segment" style="padding:0">
+				<table class="ui red table">
+					<thead>
+						<tr>
+							<th>Product Info</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<img class="ui fluid image" src="~/Content/products/@(Model.ProductId).jpg">
+							</td>
+						</tr>
+						<tr>
+							<td>Product Code </td>
+							<td>XYASAD-ASDASD-2121</td>
+						</tr>
+						<tr>
+							<td>Product Name</td>
+							<td>@Model.Product.Title</td>
+						</tr>
+						<tr>
+							<td>Seller</td>
+							<td>@Model.Seller.Nick</td>
+						</tr>
+						<tr>
+							<td>From</td>
+							<td>@Model.Product.CountryCode</td>
+						</tr>
+						<tr>
+							<td>To</td>
+							<td>@Model.Product.DestinationCountry</td>
+						</tr>
+						<tr>
+							<td>Shipping Date</td>
+							<td>@Model.Product.EarliestShipDate.ToShortDateString()</td>
+						</tr>
+						<tr>
+							<td>Quantitiy</td>
+							<td>@Model.Quantity</td>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td>USD @Model.Product.UsdPrice</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="eleven wide column">
+			<div class="ui basic segment" style="padding:0">
+				<table class="ui orange table">
+					<thead>
+						<tr>
+							<th>Your Billing & SInfo</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Full Name </td>
+							<td>@myUser.FullName</td>
+						</tr>
+						<tr>
+							<td>Credit Card</td>
+							<td>@myCard.FormattedDisplay()</td>
+						</tr>
+						<tr>
+							<td>Exp. Date</td>
+							<td>@myCard.ExpMonth / @myCard.ExpYear</td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td>@myUser.AddressLine1</td>
+						</tr>
+						<tr>
+							<td>City</td>
+							<td>@myUser.AddressCity</td>
+						</tr>
+						<tr>
+							<td>Zip Code</td>
+							<td>@myUser.AddressZip</td>
+						</tr>
+						@if (!string.IsNullOrEmpty(myUser.AddressState))
+						{
+							<tr>
+								<td>State</td>
+								<td>@myUser.AddressState</td>
+							</tr>
+						}
+						<tr>
+							<td>Country</td>
+							<td>@myUser.AddressCountry</td>
+						</tr>
 
-                    </tbody>
-                </table>
-            </div>
+					</tbody>
+				</table>
+			</div>
 
-            <div class="ui basic segment" style="padding:0">
-                <table class="ui orange table">
-                    <thead>
-                        <tr>
-                            <th>Confirm Your Order</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Price</td>
-                            <td style="text-align:right">50 USD</td>
-                        </tr>
-                        <tr>
-                            <td>Quantity</td>
-                            <td style="text-align:right">2x</td>
-                        </tr>
-                        <tr>
-                            <td>Total Price</td>
-                            <td style="text-align:right">100 USD</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <div class="ui buttons right floated">
-                                    <button class="ui button">Cancel</button>
-                                    <div class="or"></div>
-                                    <button class="ui positive button">Confirm</button>
-                                </div>
-                            </td>
-                        </tr>
+			<div class="ui basic segment" style="padding:0">
+				@using (Html.BeginForm("Checkout", "Home", FormMethod.Post))
+				{
+					<input type="hidden" name="ProductId" value="@Model.ProductId" />
+					<input type="hidden" name="Quantity" value="@Model.Quantity" />
+					<input type="hidden" name="Confirm" value="true" />
+					<table class="ui orange table">
+						<thead>
+							<tr>
+								<th>Confirm Your Order</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Price</td>
+								<td style="text-align:right">@Model.Product.UsdPrice USD</td>
+							</tr>
+							<tr>
+								<td>Quantity</td>
+								<td style="text-align:right">@Model.Quantity x</td>
+							</tr>
+							<tr>
+								<td>Total Price</td>
+								<td style="text-align:right">@(Model.Quantity * Model.Product.UsdPrice) USD</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<div class="ui buttons right floated">
+										<a href="@Url.Action("Index", "Home")" class="ui button" onclick="return(confirm('Are you sure?'))">Cancel</a>
+										<div class="or"></div>
+										<button class="ui positive button" type="submit">Confirm</button>
+									</div>
+								</td>
+							</tr>
 
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-
-
-    </div>
+						</tbody>
+					</table>
+				}
+			</div>
+		</div>
+	</div>
 </div>
 
