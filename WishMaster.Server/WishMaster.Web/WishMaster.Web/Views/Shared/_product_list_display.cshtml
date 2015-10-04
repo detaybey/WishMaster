@@ -1,23 +1,32 @@
 ﻿@model Product
 @{
-	 var flagfrom = Model.CountryCode.ToLower();
-	 var flagto = Model.DestinationCountry.ToLower();
+    var flagfrom = Model.CountryCode.ToLower();
+    var flagto = Model.DestinationCountry.ToLower();
 
-	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry.Replace("United States","USA"), Model.ShipDaysLeft);
-
+    var goingStr = string.Format("Coming To {0} in {1} days", Model.DestinationCountry.Replace("United States","USA"), Model.ShipDaysLeft);
+    var title = Model.Title;
+    if (title.Length > 25)
+    {
+        title = title.Substring(0, 25) + "...";
+    }
 }
 <table class="ui red table">
 	<thead>
 		<tr>
-			<th>@Model.Title</th>
-			<th><span class="right floated"><i class="@flagfrom flag"></i> <i class="long arrow right icon"></i> <i class="@flagto flag"></i> </span></th>
+			<th colspan="2">@title<br /><span class="right floated"><i class="@flagfrom flag" title="@flagfrom"></i> <i class="long arrow right icon"></i> <i class="@flagto flag" title="@flagto"></i> </span></th> 
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td colspan="2">
 				<img class="ui fluid image" src="~/Content/products/@(Model.Id).jpg">
-				<a class="ui red ribbon label">@goingStr</a>
+			@{
+                if (Model.ShipDaysLeft < 4)
+                {
+                    <a class="ui red ribbon label" style="position: absolute;left: 11px;top: 85px;">@goingStr</a>
+                }
+            }
+                	
 			</td>
 		</tr>
 		<tr>
