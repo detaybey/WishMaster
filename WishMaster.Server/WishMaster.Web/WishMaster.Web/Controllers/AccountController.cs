@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +9,15 @@ namespace WishMaster.Web.Controllers
 {
     public class AccountController : BaseController
     {
+
+        [HttpGet]
+        public ActionResult Orders()
+        {
+            var orders = Db.Orders.Include("Seller").Include("Product").AsQueryable();
+            var list = orders.Where(x => x.CustomerId == MyUser.Id).ToList();
+            return View(list);
+        }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -75,5 +83,6 @@ namespace WishMaster.Web.Controllers
         {
             return View();
         }
+
     }
 }

@@ -37,17 +37,17 @@
 				</div>
 
 				<div class="right menu">
-					<a class="ui dropdown item">
+					<div class="ui dropdown item">
 						<img class="ui avatar image" src="~/Content/avatar/@(myUser.Id).jpg">
 						Account
 						<i class="dropdown icon"></i>
 						<div class="menu">
-							<div class="item">Payment Information</div>
+							<div class="item" onclick="location.replace('@Url.Action("Orders","Account")')">My Orders</div>
 							<div class="ui divider"></div>
 							<div class="item">Achivements</div>
 							<div class="item">Logout</div>
 						</div>
-					</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -90,7 +90,6 @@
 
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/JSlibraries")
-	@Scripts.Render("~/bundles/js")
 
 	@RenderSection("scripts", required: false)
 	<script>
