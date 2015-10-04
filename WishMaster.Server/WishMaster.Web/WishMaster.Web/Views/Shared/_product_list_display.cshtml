@@ -1,0 +1,43 @@
+﻿@model Product
+@{
+	 var flagfrom = Model.CountryCode.ToLower();
+	 var flagto = Model.DestinationCountry.ToLower();
+
+	 var days = Math.Ceiling((Model.DueDate - DateTime.Now).TotalDays);
+	 var goingStr = string.Format("Going To {0} in {1} days", Model.DestinationCountry, days);
+
+}
+<table class="ui red table">
+	<thead>
+		<tr>
+			<th>@Model.Title</th>
+			<th><span class="right floated"><i class="@flagfrom flag"></i> <i class="long arrow right icon"></i> <i class="@flagto flag"></i> </span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2">
+				<img class="ui fluid image" src="~/Content/products/@(Model.Id).jpg">
+				<a class="ui red ribbon label">@goingStr</a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">@Model.Desc.ToUpperInvariant()</td>
+		</tr>
+		<tr>
+			<td>
+				<a class="ui large blue ribbon label">$ @Model.UsdPrice</a>
+			</td>
+			<td>
+				<a href="/home/productDetail/@(Model.Id)">
+					<div class="ui olive vertical animated button right floated" tabindex="0">
+						<div class="hidden content">Shop</div>
+						<div class="visible content">
+							<i class="shop icon"></i>
+						</div>
+					</div>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

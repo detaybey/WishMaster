@@ -1,0 +1,27 @@
+﻿@model List<User>
+@{
+	 var j = 1;
+}
+<table class="ui orange table">
+	<thead>
+		<tr>
+			<th colspan="4">Top Users</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var user in Model)
+		{
+			<tr>
+				<td>@j</td>
+				<td>
+					<img class="ui avatar image" src="~/Content/avatar/@(user.Id).jpg">
+				</td>
+				<td>@user.Nick</td>
+				<td>@user.Scores.Sum(x=>x.Value) points</td>
+			</tr>
+			{ 
+				 j += 1;
+			}
+		}	
+	</tbody>
+</table>

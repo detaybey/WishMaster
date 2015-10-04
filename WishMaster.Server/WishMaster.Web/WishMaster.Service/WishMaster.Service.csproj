@@ -145,6 +145,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Tools\Sandbox.cs" />
     <Compile Include="Tools\Security.cs" />
+    <Compile Include="ViewModels\HomePageModel.cs" />
     <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="ViewModels\LoginResult.cs" />
     <Compile Include="ViewModels\ProductAddModel.cs" />
