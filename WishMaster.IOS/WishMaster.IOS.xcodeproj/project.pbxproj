@@ -14,8 +14,9 @@
 		8CA6F4EC1BBFF62A00E8F844 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6F4EB1BBFF62A00E8F844 /* Assets.xcassets */; };
 		8CA6F4EF1BBFF62A00E8F844 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6F4ED1BBFF62A00E8F844 /* LaunchScreen.storyboard */; };
 		8CA6F4FA1BBFF62A00E8F844 /* WishMaster_IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6F4F91BBFF62A00E8F844 /* WishMaster_IOSUITests.swift */; };
-		8CA6F5051BC00C8500E8F844 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6F5041BC00C8500E8F844 /* CameraViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8CA6F5071BC0582B00E8F844 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA6F5061BC0582B00E8F844 /* CoreLocation.framework */; };
+		8CEF284A1BC0F8D100641E25 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF28491BC0F8D100641E25 /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8CEF284C1BC1084000641E25 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF284B1BC1084000641E25 /* SelectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,9 @@
 		8CA6F4F51BBFF62A00E8F844 /* WishMaster.IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WishMaster.IOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA6F4F91BBFF62A00E8F844 /* WishMaster_IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishMaster_IOSUITests.swift; sourceTree = "<group>"; };
 		8CA6F4FB1BBFF62A00E8F844 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8CA6F5041BC00C8500E8F844 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		8CA6F5061BC0582B00E8F844 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8CEF28491BC0F8D100641E25 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8CEF284B1BC1084000641E25 /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,8 @@
 				8CA6F4E11BBFF62A00E8F844 /* AppDelegate.swift */,
 				8CA6F4E31BBFF62A00E8F844 /* ViewController.swift */,
 				8CA6F4E51BBFF62A00E8F844 /* Main.storyboard */,
-				8CA6F5041BC00C8500E8F844 /* CameraViewController.swift */,
+				8CEF284B1BC1084000641E25 /* SelectionViewController.swift */,
+				8CEF28491BC0F8D100641E25 /* TableViewController.swift */,
 				8CA6F4EB1BBFF62A00E8F844 /* Assets.xcassets */,
 				8CA6F4ED1BBFF62A00E8F844 /* LaunchScreen.storyboard */,
 				8CA6F4F01BBFF62A00E8F844 /* Info.plist */,
@@ -208,8 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CA6F4E41BBFF62A00E8F844 /* ViewController.swift in Sources */,
-				8CA6F5051BC00C8500E8F844 /* CameraViewController.swift in Sources */,
+				8CEF284C1BC1084000641E25 /* SelectionViewController.swift in Sources */,
 				8CA6F4EA1BBFF62A00E8F844 /* WishMaster_IOS.xcdatamodeld in Sources */,
+				8CEF284A1BC0F8D100641E25 /* TableViewController.swift in Sources */,
 				8CA6F4E21BBFF62A00E8F844 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +410,7 @@
 				8CA6F5001BBFF62A00E8F844 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CA6F5011BBFF62A00E8F844 /* Build configuration list for PBXNativeTarget "WishMaster.IOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +419,7 @@
 				8CA6F5031BBFF62A00E8F844 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

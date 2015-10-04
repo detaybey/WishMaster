@@ -89,7 +89,7 @@ class ViewController: UIViewController {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             
                             let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("cameraView") as! CameraViewController
+                            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("cameraViewT") as! TableViewController
                             vc.sessionid = self.sessionid
                             self.presentViewController(vc, animated: true, completion: nil)
                         })
