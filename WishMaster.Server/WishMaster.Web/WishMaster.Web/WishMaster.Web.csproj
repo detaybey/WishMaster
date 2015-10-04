@@ -258,7 +258,7 @@
     <Content Include="Views\Shared\_product_list_display.cshtml" />
     <Content Include="Views\Shared\_top_users.cshtml" />
     <Content Include="Views\Home\Thankyou.cshtml" />
-    <Content Include="Views\Home\Thankyou.cshtml" />
+    <Content Include="Views\Account\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WishMaster.Service\WishMaster.Service.csproj">

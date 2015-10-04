@@ -44,7 +44,7 @@ namespace WishMaster.Web.Controllers
                 var order = ProductService.Buy(MyUser, model.ProductId);
                 if (order != null)
                 {
-                    return RedirectToAction("Index", "Home", new { success = true });
+                    return RedirectToAction("ThankYou", "Home", new { success = true });
                 }
             }
             else

@@ -279,8 +279,7 @@ namespace WishMaster.Service.Services
             PaymentsApi.PrivateApiKey = Security.GetSCPrivateKey();
             PaymentsApi api = new PaymentsApi();
             Payment payment = new Payment();
-            payment.Amount = (long)product.UsdPrice;
-
+            payment.Amount = 123123; // (long)product.UsdPrice;
 
             var card = new SimplifyCommerce.Payments.Card();
             card.Cvc = "123";
@@ -296,7 +295,7 @@ namespace WishMaster.Service.Services
 
             payment.Card = card;
             payment.Currency = "USD";
-            payment.Description = "Wishmaster Order";
+            payment.Description = "Wishmaster Order2";
             return (Payment)api.Create(payment);
         }
     }

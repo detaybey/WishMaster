@@ -4,29 +4,32 @@
 	 ViewBag.Title = "Order";
 	 Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<table class="ui celled table">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Date</th>
-			<th>Seller</th>
-			<th>Product</th>
-			<th>Days to ship</th>
-			<th></th>
-		</tr>
-	</thead>
+<div class="ui grid" style="min-height:550px;">
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Date</th>
+				<th>Seller</th>
+				<th>Product</th>
+				<th>Days to ship</th>
+				<th>Status</th>
+			</tr>
+		</thead>
 
-	<tbody>
-		@foreach (var item in Model)
-		{
+		<tbody>
+			@foreach (var item in Model)
+			{
 			<tr>
 				<td>@item.Id</td>
 				<td>@item.Created.ToLongDateString()</td>
 				<td><a href="@Url.Action("Profile", "User", new { id = item.SellerId })">@item.Seller.Nick</a></td>
 				<td>@item.Product.Title</td>
 				<td>@item.Product.DaysLeftStr(item.Product.ShipDaysLeft)</td>
+				<td>@item.PrintOrderState()</td>
 			</tr>
-		}
-	</tbody>
+			}
+		</tbody>
 
-</table>
+	</table>
+</div>

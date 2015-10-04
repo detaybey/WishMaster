@@ -44,5 +44,24 @@ namespace WishMaster.Service.Entities
 
         public ICollection<Transaction> Transactions { get; set; }
         public ICollection<Feedback> Feedbacks { get; set; }
+
+        public string PrintOrderState()
+        {
+            switch (this.State)
+            {
+                case OrderState.Paid:
+                    return "Payment done, waiting for shipment.";
+                case OrderState.Shipped:
+                    return "Shipment done, the order is on the way.";
+                case OrderState.Delivered:
+                    return "Order delivered.";
+                case OrderState.Cancelled_Complete:
+                    return "Order cancelled, refund done.";
+                case OrderState.Cancelled_WaitingForRefund:
+                    return "Order cancelled, your refund is pending.";
+                default:
+                    return "";
+            }
+        }
     }
 }
