@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app_logo.png" />
+    <Content Include="Content\app_logo_old.png" />
     <Content Include="Content\avatar\1.jpg" />
     <Content Include="Content\avatar\10.jpg" />
     <Content Include="Content\avatar\11.jpg" />

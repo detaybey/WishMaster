@@ -54,6 +54,10 @@ namespace WishMaster.Service.Services
             Db.Products.Add(product);
             Db.SaveChanges();
 
+            Db.Scores.Add(new Score() { Date = DateTime.Now, UserId = user.Id, Value = 15 });
+            Db.SaveChanges();
+
+
             return product;
         }
 
@@ -103,6 +107,12 @@ namespace WishMaster.Service.Services
             };
             Db.Transactions.Add(transaction);
             Db.SaveChanges();
+
+            Db.Scores.Add(new Score() { Date = DateTime.Now, UserId = buyer.Id, Value = 15 });
+            Db.Scores.Add(new Score() { Date = DateTime.Now, UserId = product.SellerId, Value = 15 });
+
+            Db.SaveChanges();
+
 
             return order;
         }
