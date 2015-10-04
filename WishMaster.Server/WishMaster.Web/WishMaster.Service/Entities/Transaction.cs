@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -29,5 +30,13 @@ namespace WishMaster.Service.Entities
         public Card Card { get; set; }
 
         public decimal UsdAmount { get; set; }
+
+        public int? RequestId { get; set; }
+        public long? TransactionReference { get; set; }
+        [StringLength(20)]
+        public string PaymentId { get; set; }
+        [StringLength(20)]
+        public string AuthCode { get; set; }
+        public bool Approved { get; set; }
     }
 }

@@ -150,9 +150,54 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app_logo.png" />
+    <Content Include="Content\avatar\1.jpg" />
+    <Content Include="Content\avatar\10.jpg" />
+    <Content Include="Content\avatar\11.jpg" />
+    <Content Include="Content\avatar\12.jpg" />
+    <Content Include="Content\avatar\13.jpg" />
+    <Content Include="Content\avatar\14.jpg" />
+    <Content Include="Content\avatar\15.jpg" />
+    <Content Include="Content\avatar\2.jpg" />
+    <Content Include="Content\avatar\3.jpg" />
+    <Content Include="Content\avatar\4.jpg" />
+    <Content Include="Content\avatar\5.jpg" />
+    <Content Include="Content\avatar\6.jpg" />
+    <Content Include="Content\avatar\7.jpg" />
+    <Content Include="Content\avatar\8.jpg" />
+    <Content Include="Content\avatar\9.jpg" />
     <Content Include="Content\avatar\Emre.png" />
+    <Content Include="Content\banner.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\genie.png" />
+    <Content Include="Content\Mastercard_developer_Zone.png" />
+    <Content Include="Content\products\10.jpg" />
+    <Content Include="Content\products\11.jpg" />
+    <Content Include="Content\products\12.jpg" />
+    <Content Include="Content\products\13.jpg" />
+    <Content Include="Content\products\14.jpg" />
+    <Content Include="Content\products\15.jpg" />
+    <Content Include="Content\products\16.jpg" />
+    <Content Include="Content\products\17.jpg" />
+    <Content Include="Content\products\18.jpg" />
+    <Content Include="Content\products\19.jpg" />
+    <Content Include="Content\products\20.jpg" />
+    <Content Include="Content\products\21.jpg" />
+    <Content Include="Content\products\22.jpg" />
+    <Content Include="Content\products\23.jpg" />
+    <Content Include="Content\products\24.jpg" />
+    <Content Include="Content\products\25.jpg" />
+    <Content Include="Content\products\26.jpg" />
+    <Content Include="Content\products\27.jpg" />
+    <Content Include="Content\products\28.jpg" />
+    <Content Include="Content\products\29.jpg" />
+    <Content Include="Content\products\4.jpg" />
+    <Content Include="Content\products\5.jpg" />
+    <Content Include="Content\products\6.jpg" />
+    <Content Include="Content\products\7.jpg" />
+    <Content Include="Content\products\8.jpg" />
+    <Content Include="Content\products\9.jpg" />
     <Content Include="Content\sample\kapak.jpg" />
     <Content Include="Content\semantic.css" />
     <Content Include="Content\themes\basic\assets\fonts\icons.svg" />
@@ -212,6 +257,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Shared\_product_list_display.cshtml" />
+    <Content Include="Views\Shared\_top_users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WishMaster.Service\WishMaster.Service.csproj">
@@ -227,7 +274,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\products\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Product\" />
   </ItemGroup>

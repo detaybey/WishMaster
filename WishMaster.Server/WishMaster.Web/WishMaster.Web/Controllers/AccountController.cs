@@ -66,7 +66,7 @@ namespace WishMaster.Web.Controllers
             var result = UserService.TryLogin(model, true);
             return Json(result);
         }
-
+     
         public ActionResult Registration()
         {
             return View();

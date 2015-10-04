@@ -21,7 +21,7 @@ namespace Test.Services
         public void TestLostStolenService_Stolen()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 5343434343434343;
+            accountInquiry.AccountNumber = "5343434343434343";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("S"));
         }
@@ -30,7 +30,7 @@ namespace Test.Services
         public void TestLostStolenService_Fraud()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 5105105105105100;
+            accountInquiry.AccountNumber = "5105105105105100";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("F"));
         }
@@ -39,7 +39,7 @@ namespace Test.Services
         public void TestLostStolenService_Lost()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 5222222222222200;
+            accountInquiry.AccountNumber = "5222222222222200";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("L"));
         }
@@ -48,7 +48,7 @@ namespace Test.Services
         public void TestLostStolenService_CaptureCard()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 5305305305305300;
+            accountInquiry.AccountNumber = "5305305305305300";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("P"));
         }
@@ -57,7 +57,7 @@ namespace Test.Services
         public void TestLostStolenService_UnauthorizedUse()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 6011111111111117;
+            accountInquiry.AccountNumber = "6011111111111117";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("U"));
         }
@@ -66,7 +66,7 @@ namespace Test.Services
         public void TestLostStolenService_Counterfeit()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 4444333322221111;
+            accountInquiry.AccountNumber = "4444333322221111";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals("X"));
         }
@@ -75,7 +75,7 @@ namespace Test.Services
         public void TestLostStolenService_NotListed()
         {
             AccountInquiry accountInquiry = new AccountInquiry();
-            accountInquiry.AccountNumber = 343434343434343;
+            accountInquiry.AccountNumber = "343434343434343";
             Account account = service.GetLostStolen(accountInquiry);
             Assert.AreEqual(true, account.ReasonCode.Equals(""));
         }

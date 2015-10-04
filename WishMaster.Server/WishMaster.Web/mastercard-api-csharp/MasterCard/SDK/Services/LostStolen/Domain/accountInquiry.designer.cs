@@ -17,19 +17,6 @@ namespace MasterCard.SDK.Services.LostStolen.Domain
 
     public partial class AccountInquiry
     {
-
-        private long accountNumberField;
-
-        public long AccountNumber
-        {
-            get
-            {
-                return this.accountNumberField;
-            }
-            set
-            {
-                this.accountNumberField = value;
-            }
-        }
+        public string AccountNumber { get; set; }
     }
 }

@@ -1,4 +1,37 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model HomePageModel
+@{
+	 ViewBag.Title = "Home Page";
+	 var activeStr = Model.SelectedCategoryId == 0 ? "active" : "";
 }
- <h2> Home Page</h2>
+
+<div class="ui orange eleven item menu">
+	<a class="item @activeStr" href="?categoryId=0">
+		Just Arrived!
+	</a>
+	@foreach (var category in Model.Categories.OrderBy(x=>x.Id))
+	{
+		if(category.Id == 7 && category.Id == 6)
+		{
+			continue;
+		}
+	   activeStr = category.Id == Model.SelectedCategoryId ? "active" : "";
+
+		<a class="item @activeStr" href="?categoryId=@category.Id">
+			@category.Name
+		</a>
+	}
+</div>
+<div class="ui grid basic segment twelve wide column">
+
+	@foreach(var product in Model.Products)
+	{
+		@Html.Partial("_product_list_display", product)
+	}
+</div>
+<div class="ui grid container four wide column">
+		@Html.Partial("_top_users", Model.TopUsers)
+	<div class="ui  segment">
+		<img class="ui image" src="~/Content/banner.png" />
+	</div>
+</div>
+	

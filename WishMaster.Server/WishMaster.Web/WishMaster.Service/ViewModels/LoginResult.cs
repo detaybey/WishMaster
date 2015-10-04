@@ -17,5 +17,6 @@ namespace WishMaster.Service.ViewModels
         public long UserId { get; set; }
         public Boolean Success { get; set; }
         public dynamic Categories { get; set; }
+        public string SessionId { get; set; }
     }
 }

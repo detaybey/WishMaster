@@ -10,10 +10,13 @@ namespace WishMaster.Service.Services
 {
     public class ProductService : BaseService
     {
-        public ProductService(WishMasterDataContext db)
+
+        public CardService CardService { get; set; }
+
+        public ProductService(WishMasterDataContext db, CardService cardService)
             : base(db)
         {
-
+            CardService = cardService;
         }
 
         /// <summary>
@@ -23,11 +26,13 @@ namespace WishMaster.Service.Services
         /// <param name="model">Product information</param>
         /// <param name="mediaRoot">Root path for photo</param>
         /// <returns>New created product record</returns>
-        public Product Add(User user, ProductAddModel model, string mediaRoot)
+        public Product Add(User user, ProductAddModel model)
         {
-            if (model.file == null)
+            // if no category was picked select other
+            if (model.categoryid == 0)
             {
-                return null;
+                var other = Db.Categories.FirstOrDefault(x => x.Name == "Other");
+                model.categoryid = other.Id;
             }
 
             var product = new Product()
@@ -42,20 +47,65 @@ namespace WishMaster.Service.Services
                 Quantity = model.quantity,
                 SellerId = user.Id,
                 Title = model.title,
-                UsdPrice = model.price
+                UsdPrice = model.price,
+                CountryCode = "TR",
+                DestinationCountry = model.country
             };
             Db.Products.Add(product);
             Db.SaveChanges();
 
-            var savePath = System.IO.Path.Combine(mediaRoot, product.Id.ToString() + ".jpg");
-            if (System.IO.File.Exists(savePath))
-            {
-                System.IO.File.Delete(savePath);
-            }
-            model.file.SaveAs(savePath);
             return product;
+        }
+
+
+        /// <summary>
+        /// Creates an order using a product
+        /// </summary>
+        /// <param name="buyer">Buyer user</param>
+        /// <param name="productId">productid</param>
+        /// <returns>New created order record</returns>
+        public Order Buy(User buyer, long productId)
+        {
+            var product = Db.Products.Find(productId);
+
+            var payment = CardService.ChargeBuyer((long)product.UsdPrice, buyer);
+            var approved = payment.PaymentStatus == "APPROVED";
+            if (!approved)
+            {
+                return null;
+            }
+            var buyerCard = buyer.Cards.First();
+            var order = new Order()
+            {
+                Created = DateTime.Now,
+                CustomerId = buyer.Id,
+                ProductId = productId,
+                SellerId = product.SellerId,
+                State = OrderState.Paid,
+            };
+            Db.Orders.Add(order);
+            Db.SaveChanges();
+
+            var transaction = new Transaction()
+            {
+                CardId = buyerCard.Id,
+                Date = DateTime.Now,
+                OrderId = order.Id,
+                RequestId = 0,
+                TransactionReference = 0,
+                Hash = Guid.NewGuid(),
+                UsdAmount = product.UsdPrice,
+                Type = TransactionType.Charge_Buyer,
+                AuthCode = payment.AuthCode,
+                PaymentId = payment.Id,
+                Approved = approved
+            };
+            Db.Transactions.Add(transaction);
+            Db.SaveChanges();
+
+            return order;
         }
     }
 
 }
- 
+

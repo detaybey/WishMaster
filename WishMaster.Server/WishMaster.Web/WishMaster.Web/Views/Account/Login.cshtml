@@ -4,5 +4,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
-
+<h2 class="ui orange image header">
+    <img src="~/Content/genie.png" class="image">
+    <div class="content">
+        Log-in to your account
+    </div>
+</h2>
+<div class="two wide column">
+    <form class="ui basic form segment ">
+        <div class="ui red segment">
+            <div class="ui stacked segment">
+                <div class="field fluid">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" placeholder="E-mail address">
+                    </div>
+                </div>
+                <div class="field fluid">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="ui fluid large orange submit button">Login</div>
+            </div>
+            <div class="ui error message"></div>
+            <div class="ui message">
+                New Seeker or Traveller ? <a href="/account/registration/">Sign Up</a>
+            </div>
+        </div>
+    </form>
+    </div> 

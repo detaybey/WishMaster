@@ -21,6 +21,8 @@ namespace WishMaster.Service.Entities
 
         public long Id { get; set; }
 
+        [StringLength(36)]
+        public string SessionId { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
 
@@ -46,6 +48,9 @@ namespace WishMaster.Service.Entities
         public string AddressCountry { get; set; }
         [StringLength(2)]
         public string AddressState { get; set; }
+
+        [StringLength(20)]
+        public string Phone { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

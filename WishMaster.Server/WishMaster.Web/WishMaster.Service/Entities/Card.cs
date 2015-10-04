@@ -14,6 +14,7 @@ namespace WishMaster.Service.Entities
         {
             Transactions = new HashSet<Transaction>();
             FraudLogs = new HashSet<FraudLog>();
+            StolenLogs = new HashSet<StolenLog>();
         }
         public long Id { get; set; }
 
@@ -30,7 +31,19 @@ namespace WishMaster.Service.Entities
         [StringLength(3)]
         public string CCV { get; set; }
 
+        [StringLength(22)]
+        public string AcceptorName { get; set; }
+        [StringLength(13)]
+        public string AcceptorCity { get; set; }
+        [StringLength(2)]
+        public string AcceptorState { get; set; }
+        [StringLength(10)]
+        public string AcceptorPostalCode { get; set; }
+        [StringLength(3)]
+        public string AcceptorCountry { get; set; }
+
         public ICollection<Transaction> Transactions { get; set; }
         public ICollection<FraudLog> FraudLogs { get; set; }
+        public ICollection<StolenLog> StolenLogs { get; set; }
     }
 }
