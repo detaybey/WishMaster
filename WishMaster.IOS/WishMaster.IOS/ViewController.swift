@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var usernameBox: UITextField!
     @IBOutlet weak var passwordBox: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    var sessionid = "";
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.text = "" //celan error label
@@ -37,8 +38,7 @@ class ViewController: UIViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-    
+        
     @IBAction func loginAction(sender: UIButton) {
         if (usernameBox.text == "")
         {
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://172.29.4.211/account/login/")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://172.29.4.3/account/mobilelogin/")!)
         
         let session = NSURLSession.sharedSession()
         
@@ -75,17 +75,21 @@ class ViewController: UIViewController {
                     
                     if(success == true)
                     {
+                        self.sessionid = (json["SessionId"] as? String)!
+                        //print(self.sessionid)
+                        
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             
                             let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                            let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("cameraView")
+                            let vc = mainStoryboard.instantiateViewControllerWithIdentifier("cameraView") as! CameraViewController
+                            vc.sessionid = self.sessionid
                             self.presentViewController(vc, animated: true, completion: nil)
                         })
                     }
                     else
                     {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.errorLabel.text = "*Username/Password error!";
+                            self.errorLabel.text = "*Username/Password error!"
                             self.errorLabel.hidden = false
                         }) //Username or password does not match
                         
